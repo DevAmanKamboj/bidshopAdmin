@@ -1,1 +1,14 @@
-<p>dashboard works!</p>
+<app-header></app-header>
+
+<body>
+
+
+    <div class="container">
+        <p>dashboard works!</p>
+
+        <li *ngFor="let product of productsArray">
+            <p>{{product.id}}</p>
+            <!-- <p>{{product.id}}</p> -->
+        </li>
+    </div>
+</body>
