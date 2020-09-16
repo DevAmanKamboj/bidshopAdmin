@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  heading="BidShop Application";
+  heading="BidShop Admin";
   constructor() { }
 
   ngOnInit(): void {
