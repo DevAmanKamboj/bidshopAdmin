@@ -7,26 +7,33 @@
     you can substitue the span of reauth email for a input with the email and
     include the remember me checkbox
     -->
-    <div class="container" >
-        <div class="card card-container">
-            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
-            <img id="profile-img" class="profile-img-card" src="assets/images/logo.png" />
-            <p id="profile-name" class="profile-name-card"></p>
-            <form class="form-signin">
-                <span id="reauth-email" class="reauth-email"></span>
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                <div id="remember" class="checkbox">
-                    <label>
-                        <input type="checkbox" value="remember-me"> Remember me
-                    </label>
-                </div>
+<div class="container">
+    <div class="card card-container">
+        <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+        <img id="profile-img" class="profile-img-card" src="assets/images/logo.png" />
+        <p id="profile-name" class="profile-name-card"></p>
+        <form class="form-signin" (ngSubmit)="onSubmit()" #formData="ngForm">
+            <span id="reauth-email" class="reauth-email"></span>
+            <input type="email" id="inputEmail" class="form-control" placeholder="User Name" name="userName" ngModel
+                required autofocus #userName="ngModel">
+            <span class="help-block" *ngIf="!userName.valid && userName.touched">Please enter User Name</span>
+            <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password"
+                ngModel required #password="ngModel">
+            <span class="help-block" *ngIf="!password.valid && password.touched">Please enter password</span>
+            <div id="remember" class="checkbox">
+                <label>
+                    <input type="checkbox" value="remember-me"> Remember me
+                </label>
+            </div>
+            <span style="color:red">{{error}}</span>
+            <button [disabled]="formData.invalid" class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign
+                in</button>
 
-                    <!-- <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" >Sign in</button> -->
-                <a type="button" class="btn btn-lg btn-primary btn-block btn-signin" routerLink="/dashboard">Sign in</a>
-            </form><!-- /form -->
-            <a href="#" class="forgot-password">
-                Forgot the password?
-            </a>
-        </div><!-- /card-container -->
-    </div><!-- /container -->
+            <!-- <a type="button" class="btn btn-lg btn-primary btn-block btn-signin" routerLink="/dashboard">Sign in</a> -->
+        </form><!-- /form -->
+        <!-- <button class="btn btn-lg btn-primary" (click)="dashboard()">go to dashboard</button> -->
+        <a href="#" class="forgot-password">
+            Forgot the password?
+        </a>
+    </div><!-- /card-container -->
+</div><!-- /container -->
