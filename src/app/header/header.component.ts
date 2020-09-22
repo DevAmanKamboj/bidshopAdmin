@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  heading="BidShop Admin";
-  constructor() { }
+  heading = "BidShop Admin";
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+  logout() {
+    sessionStorage.clear();
+    this.router.navigate(['']);
   }
 } 

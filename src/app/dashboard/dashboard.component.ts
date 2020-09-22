@@ -11,6 +11,7 @@ export class DashboardComponent implements OnInit {
 
   products: Object;
   productsArray: Object[];
+  session:WindowSessionStorage;
 
   constructor(private http: HttpService) { }
 

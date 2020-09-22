@@ -1,14 +1,43 @@
 <app-header></app-header>
-
+<app-navbar></app-navbar>
 <body>
-
-
     <div class="container">
-        <p>dashboard works!</p>
 
-        <li *ngFor="let product of productsArray">
-            <p>{{product.id}}</p>
-            <!-- <p>{{product.id}}</p> -->
-        </li>
+        <!-- <i class="fa fa-adjust"></i> -->
+        <!-- <p>dashboard works!</p> -->
+        <!-- <i class="far fa-sign-out-alt"></i>
+        <i class="fas fa-sign-out-alt"></i> -->
+        <!-- <i class="fa fa-adjust"></i> -->
+        <!-- <i class="fa fa-sign-out"></i> -->
+        <!-- <span class="sign-out-alt"></span> -->
+        <div class="row">
+            <!-- <span class="oi oi-account-logout"></span> -->
+            <div class="col-md-2" *ngFor="let product of productsArray">
+
+
+                <figure class="card card-product">
+                    <div class="img-wrap"><img height="150px;" width="100%"
+                            src="https://cdn.vox-cdn.com/thumbor/4gxMrqP5NWrUnDU6-GSgIE_xuBI=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/19206339/akrales_190913_3628_0277.jpg">
+                    </div>
+                    <figcaption class="info-wrap">
+                        <h6 class="title">{{product.productName}}</h6>
+                        <!-- <p class="desc">{{product.description}}</p> -->
+                        <div class="rating-wrap">
+                            <div class="label-rating">{{product.noOfBids}} Bids</div>
+                            <div class="label-rating">{{product.noOfViewers}} viewers </div>
+                        </div> <!-- rating-wrap.// -->
+                    </figcaption>
+                    <div class="bottom-wrap">
+                        <!-- <a href="" class="btn btn-sm btn-primary float-right">Order Now</a> -->
+                        <div class="price-wrap h6">
+                            <span class="price-new">Min Price:{{product.minBidPrice}}</span>
+                        </div> <!-- price-wrap.// -->
+                    </div> <!-- bottom-wrap.// -->
+                </figure>
+
+                <!-- <p>{{product.id}}</p> -->
+
+            </div>
+        </div>
     </div>
 </body>
