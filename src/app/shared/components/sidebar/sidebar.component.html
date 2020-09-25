@@ -1,1 +1,18 @@
-<mat-slider min="1" max="100" step="1" value="99"></mat-slider>
+<!-- <section class="tp-section">
+    <span>File</span>
+</section>
+<section class="tp-section">
+    <span>Edit</span>
+</section> -->
+<mat-nav-list>
+    <mat-list-item [routerLink]="['/dashboard']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:
+        true}">
+        <mat-icon mat-list-icon>home</mat-icon>
+        <a matLine>Home</a>
+    </mat-list-item>
+    <mat-list-item [routerLink]=" ['users']" [routerLinkActive]="['active']">
+        <mat-icon mat-list-icon>people</mat-icon>
+        <!-- <span>Users</span> -->
+        <a matLine> Users</a>
+    </mat-list-item>
+</mat-nav-list>

@@ -5,6 +5,9 @@ import { DashboardComponent } from 'src/app/modules/dashboard/dashboard.componen
 import { RouterModule } from '@angular/router';
 import { UsersComponent } from 'src/app/modules/users/users.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { MatSidenavModule } from '@angular/material/sidenav';
+
+import { MatTreeModule } from '@angular/material/tree';
 
 
 
@@ -17,7 +20,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
   imports: [
     CommonModule,
     RouterModule,
-    SharedModule
+    SharedModule,
+    MatSidenavModule,
+    MatTreeModule
   ]
 })
 export class DefaultModule { }

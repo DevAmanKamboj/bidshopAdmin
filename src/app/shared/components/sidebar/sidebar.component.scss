@@ -1,0 +1,18 @@
+.tp-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+  width: 100px;
+}
+
+.active {
+  // color:#66b3ff;
+  background: #e6e6e6;
+    color: dodgerblue;
+  //font-weight: bold;
+}
+mat-list-item:hover {
+  transform: translate3D(0, -1px, 0) scale(1.03);
+}
+
