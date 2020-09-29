@@ -15,4 +15,19 @@
         <!-- <span>Users</span> -->
         <a matLine> Users</a>
     </mat-list-item>
+    <mat-list-item [routerLink]=" ['activeProducts']" [routerLinkActive]="['active']">
+        <mat-icon mat-list-icon>schedule</mat-icon>
+        <!-- <span>Users</span> -->
+        <a matLine> Active Products</a>
+    </mat-list-item>
+    <mat-list-item [routerLink]=" ['expiredProducts']" [routerLinkActive]="['active']">
+        <mat-icon mat-list-icon>history</mat-icon>
+        <!-- <span>Users</span> -->
+        <a matLine> Expired Products</a>
+    </mat-list-item>
+    <mat-list-item [routerLink]=" ['upcomingProducts']" [routerLinkActive]="['active']">
+        <mat-icon mat-list-icon>update</mat-icon>
+        <!-- <span>Users</span> -->
+        <a matLine>Upcoming Products</a>
+    </mat-list-item>
 </mat-nav-list>
