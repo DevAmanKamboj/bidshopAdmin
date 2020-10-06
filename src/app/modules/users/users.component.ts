@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 
 import { HttpService } from 'src/app/http.service';
 
@@ -47,7 +48,7 @@ export class Users {
 })
 export class UsersComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'name', 'emailId', 'phoneNumber', 'points'];
+  displayedColumns: string[] = ['id', 'name', 'emailId', 'phoneNumber', 'points', 'action'];
   user: Users[] = [];
   dataSource;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -55,7 +56,7 @@ export class UsersComponent implements OnInit {
 
   ngAfterViewInit() {
   }
-  constructor(private http: HttpService) { }
+  constructor(private http: HttpService, private router: Router) { }
 
   ngOnInit(): void {
     this.http.getAllUser().subscribe(responseData => {
@@ -66,4 +67,12 @@ export class UsersComponent implements OnInit {
       this.dataSource.sort = this.sort;
     });
   }
+
+  getUserDetail(id: string) {
+    // alert("User with ID=" + id + " clicked");
+    sessionStorage.setItem('userId', id);
+    console.log("after click=" + sessionStorage.getItem('userId'));
+    this.router.navigate(['dashboard/userDetail'], { state: { userId: id } });
+  }
+
 }

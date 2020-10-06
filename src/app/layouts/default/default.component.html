@@ -1,17 +1,13 @@
- <header>
+<header>
     <app-header></app-header>
 </header>
-<!-- <mat-tree>
-    <mat-tree-node>Product</mat-tree-node>
-    <mat-tree-node>Active</mat-tree-node>
-    <mat-tree-node>Expired</mat-tree-node>
-</mat-tree> -->
+
 <mat-sidenav-container class="tp-container">
     <mat-sidenav class="tp-sidenav" mode="side" opened>
         <app-sidebar></app-sidebar>
     </mat-sidenav>
 
-    <mat-sidenav-content>
+    <mat-sidenav-content style="margin-top: 20px;">
         <router-outlet></router-outlet>
     </mat-sidenav-content>
 

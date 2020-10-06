@@ -23,6 +23,13 @@ import { ActiveProductsComponent } from 'src/app/modules/active-products/active-
 import { MatSortModule } from '@angular/material/sort';
 import { UpcomingProductsComponent } from 'src/app/modules/upcoming-products/upcoming-products.component';
 import { ExpiredProductsComponent } from 'src/app/modules/expired-products/expired-products.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { UserDetailComponent } from 'src/app/modules/user-detail/user-detail.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 
 
@@ -33,7 +40,8 @@ import { ExpiredProductsComponent } from 'src/app/modules/expired-products/expir
     UsersComponent,
     ActiveProductsComponent,
     ExpiredProductsComponent,
-    UpcomingProductsComponent
+    UpcomingProductsComponent,
+    UserDetailComponent
   ],
   imports: [
     CommonModule,
@@ -48,7 +56,13 @@ import { ExpiredProductsComponent } from 'src/app/modules/expired-products/expir
     MatNativeDateModule,
     ReactiveFormsModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatButtonModule,
+    MatCardModule,
+    MatInputModule,
+    MatTabsModule,
+    MatSnackBarModule,
+    MatSlideToggleModule
   ]
 })
 export class DefaultModule { }

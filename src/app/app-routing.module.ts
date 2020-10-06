@@ -14,6 +14,9 @@ import { ExpiredProductsComponent } from './modules/expired-products/expired-pro
 
 import { UpcomingProductsComponent } from './modules/upcoming-products/upcoming-products.component';
 
+
+import { UserDetailComponent } from 'src/app/modules/user-detail/user-detail.component';
+
 const routes: Routes = [
   {
     path: 'dashboard', component: DefaultComponent, children: [{
@@ -26,6 +29,8 @@ const routes: Routes = [
       path: 'expiredProducts', component: ExpiredProductsComponent
     }, {
       path: 'upcomingProducts', component: UpcomingProductsComponent
+    }, {
+      path: 'userDetail', component: UserDetailComponent
     }
     ]
   },

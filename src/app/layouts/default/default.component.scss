@@ -10,5 +10,27 @@
 
 .tp-sidenav {
   width: 200px;
-  
+  // position: sticky;
+  // left:0;
+  // position:static;
+  //  position: relative;;
+}
+
+header {
+  // position: fixed;
+  // width: 100%;
+  // z-index: 100;
+ 
+}
+
+mat-sidenav-content {
+  // position: absolute;
+}
+
+#container {
+  position: relative;
+}
+
+#container>* {
+  position: absolute;
 }

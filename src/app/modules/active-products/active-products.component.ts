@@ -62,7 +62,7 @@ export class product {
 })
 export class ActiveProductsComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'productName', 'startDateTime', 'endDateTime', 'noOfBids', 'maxPriceBidDone'];
+  displayedColumns: string[] = ['id', 'productName', 'startDateTime', 'endDateTime', 'noOfBids', 'maxPriceBidDone', 'action'];
   products: product[] = [];
   dataSource;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -78,6 +78,9 @@ export class ActiveProductsComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
+  }
+  getProductDetail(id: number) {
+    alert("Product with ID=" + id + " clicked");
   }
 
 

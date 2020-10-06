@@ -1,0 +1,147 @@
+<!-- <div class="container">
+    <div class="row">
+        <mat-card>
+            <mat-card-title>Suresh Sharma<br>
+                <img  mat-card-sm-image
+                    src="https://material.angular.io/assets/img/examples/shiba2.jpg">
+            </mat-card-title>
+        </mat-card>
+    </div>
+</div> -->
+<div class="container">
+    <div class="row">
+        <!-- <mat-card class="example-card"> -->
+        <!-- <mat-card-header> -->
+        <!-- <mat-card-title>  -->
+        <!-- <mat-card-content> -->
+        <div class="col-md-2">
+            <img class="userProfileImage"
+                src="https://smedia2.intoday.in/indiatoday/images/stories/2015April/randeep-story-650_041315045800.jpg"
+                alt="Photo of a Shiba Inu">
+        </div>
+        <!-- </mat-card-title> -->
+        <!-- <div mat-card-avatar ></div> -->
+
+        <!-- <mat-card-title>Suresh Sharma</mat-card-title>
+                <mat-card-subtitle>Email: xyz@gmail.com</mat-card-subtitle>
+                <mat-card-subtitle>Phone: 987654321</mat-card-subtitle> -->
+        <!-- </mat-card-header> -->
+
+        <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+                alt="Photo of a Shiba Inu"> -->
+        <!-- <mat-card-content> -->
+        <div class="col-md-10">
+            <form class="example-form" (ngSubmit)="updateUser()">
+                <!-- <mat-form-field class="example-full-width">
+                        <img mat-card-avatar src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+                            alt="Photo of a Shiba Inu">
+                    </mat-form-field> -->
+                <div class="row">
+                    <div class="col">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Full Name</mat-label>
+                            <input matInput placeholder="Ex. Suresh" name="user.name" [(ngModel)]="user.name"
+                                #name="ngModel">
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Email Id
+                                <span *ngIf="user.emailIdVerified;else notVerified"
+                                    class="material-icons green">check_circle</span>
+                                <ng-template #notVerified> <span class="material-icons red">
+                                        highlight_off
+                                    </span></ng-template>
+                            </mat-label>
+
+                            <input matInput placeholder="Ex. abc@gmail.com" name="user.emailId"
+                                [(ngModel)]="user.emailId" #emailId="ngModel">
+
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Phone Number
+                                <span *ngIf="user.phoneNumberVerified;else notVerified"
+                                    class="material-icons green">check_circle</span>
+                                <ng-template #notVerified> <span class="material-icons red">
+                                        highlight_off
+                                    </span></ng-template>
+                            </mat-label>
+
+                            <input matInput placeholder="Ex. 9876543210" name="user.phoneNumber"
+                                [(ngModel)]="user.phoneNumber" #phoneNumber="ngModel">
+                        </mat-form-field>
+                    </div>
+                    <div class="col">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Gender</mat-label>
+                            <!-- <mat-label>Male</mat-label> -->
+
+                            <input *ngIf="!user.gender" matInput value="Not Available" disabled>
+                            <input *ngIf="user.gender" matInput placeholder="Ex. Male" name="user.gender"
+                                [(ngModel)]="user.gender" #gender="ngModel" disabled>
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Points</mat-label>
+                            <input matInput placeholder="Ex. 10" name="user.points" [(ngModel)]="user.points"
+                                #points="ngModel" disabled>
+                            <!-- <textarea matInput placeholder="Ex. It makes me feel...">35</textarea> -->
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Referral Code</mat-label>
+                            <input matInput placeholder="Ex. xYzAB" name="user.referralCode"
+                                [(ngModel)]="user.referralCode" #referralCode="ngModel" disabled>
+                            <!-- <textarea matInput placeholder="Ex. It makes me feel...">35</textarea> -->
+                        </mat-form-field>
+                    </div>
+                    <div class="col">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Referred Code</mat-label>
+                            <input *ngIf="!user.referredCode" matInput value="Not Available" disabled>
+                            <input *ngIf="user.referredCode" matInput placeholder="Ex. xYzAB" name="user.referredCode"
+                                [(ngModel)]="user.referredCode" #referredCode="ngModel" disabled>
+                            <!-- <textarea matInput placeholder="Ex. It makes me feel...">35</textarea> -->
+                        </mat-form-field>
+                        <div class="buttonDiv">
+                            <button type="submit" mat-raised-button class="saveButton">Update</button>
+
+                            <button *ngIf="user.isActive;else unBlock" (click)="blockUnBlockUser()" type="button"
+                                mat-raised-button color="warn">Block</button>
+                            <ng-template #unBlock>
+                                <button (click)="blockUnBlockUser()" type="button"
+                                mat-raised-button color="warn">UnBlock</button>
+                            </ng-template>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+
+        </div>
+        <!-- </mat-card-content> -->
+        <!-- <p>Email:sureshsharma@gmail.com</p>
+                <p>Phone:sureshsharma@gmail.com</p> -->
+
+        <!-- <p>
+        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+        bred for hunting.
+      </p> -->
+        <!-- </mat-card-content> -->
+        <!-- <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions> -->
+        <!-- </mat-card> -->
+    </div>
+    <!-- <div class="row"> -->
+    <!-- mat-align-tabs="start" -->
+    <mat-tab-group dynamicHeight mat-stretch-tabs>
+        <mat-tab label="Addresses"> Content 1 </mat-tab>
+        <mat-tab label="Products Bidded"> Content 2 </mat-tab>
+        <mat-tab label="Products Winned"> Content 3 </mat-tab>
+        <mat-tab label="Transaction"> Content 4 </mat-tab>
+    </mat-tab-group>
+    <!-- </div> -->
+</div>
+
+<!-- Copyright 2020 Google LLC. All Rights Reserved.
+      Use of this source code is governed by an MIT-style license that
+      can be found in the LICENSE file at http://angular.io/license -->
