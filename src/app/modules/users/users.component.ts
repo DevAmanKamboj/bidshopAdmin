@@ -4,28 +4,28 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-
+import { UserService } from 'src/app/shared/models/user.service';
 import { HttpService } from 'src/app/http.service';
 
 
-export class Users {
-  id: number;
-  name: string;
-  emailId: string;
-  phoneNumber: string;
-  points: number;
+// export class Users {
+//   id: number;
+//   name: string;
+//   emailId: string;
+//   phoneNumber: string;
+//   points: number;
 
-  constructor(id: number, name: string, emailId: string, phoneNumber: string, points: number) {
-    this.id = id;
-    this.name = name;
+//   constructor(id: number, name: string, emailId: string, phoneNumber: string, points: number) {
+//     this.id = id;
+//     this.name = name;
 
-    this.emailId = emailId;
-    this.phoneNumber = phoneNumber;
+//     this.emailId = emailId;
+//     this.phoneNumber = phoneNumber;
 
-    this.points = points;
+//     this.points = points;
 
-  }
-}
+//   }
+// }
 
 // const ELEMENT_DATA: PeriodicElement[] = [
 //   { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
@@ -49,7 +49,7 @@ export class Users {
 export class UsersComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'name', 'emailId', 'phoneNumber', 'points', 'action'];
-  user: Users[] = [];
+  user: UserService[] = [];
   dataSource;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -62,7 +62,7 @@ export class UsersComponent implements OnInit {
     this.http.getAllUser().subscribe(responseData => {
       this.user = responseData['data'];
       console.log(responseData);
-      this.dataSource = new MatTableDataSource<Users>(this.user);
+      this.dataSource = new MatTableDataSource<UserService>(this.user);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });

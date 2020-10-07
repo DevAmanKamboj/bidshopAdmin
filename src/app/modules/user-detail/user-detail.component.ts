@@ -3,54 +3,7 @@ import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { HttpService } from 'src/app/http.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
-export class Users {
-  id: number;
-  name: string;
-  emailId: string;
-  phoneNumber: string;
-  points: number;
-  gender: string;
-  referralCode: string;
-
-  referredCode: string;
-
-  profilePictureUrl: string;
-
-  emailIdVerified: Boolean;
-
-  phoneNumberVerified: Boolean;
-
-  isActive: Boolean;
-
-  constructor() {
-    // this.id = "";
-    // this.name = name;
-    // this.emailId = emailId;
-    // this.phoneNumber = phoneNumber;
-    // this.points = points;
-    this.gender = "Not Available";
-    // this.referralCode = referralCode;
-    this.referredCode = "Not Available";
-    // this.profilePictureUrl = profilePictureUrl;
-
-  }
-  // constructor(name: string) {
-  //   this.name = name;
-
-  // }
-  // constructor(id: number, name: string, emailId: string, phoneNumber: string, points: number, gender: string, referralCode: string, referredCode: string, profilePictureUrl: string) {
-  //   this.id = id;
-  //   this.name = name;
-  //   this.emailId = emailId;
-  //   this.phoneNumber = phoneNumber;
-  //   this.points = points;
-  //   this.gender = gender;
-  //   this.referralCode = referralCode;
-  //   this.referredCode = referralCode;
-  //   this.profilePictureUrl = profilePictureUrl;
-  // }
-}
+import { UserService } from 'src/app/shared/models/user.service';
 
 @Component({
   selector: 'app-user-detail',
@@ -58,34 +11,19 @@ export class Users {
   styleUrls: ['./user-detail.component.scss']
 })
 export class UserDetailComponent implements OnInit {
-  user = new Users();
+  user = new UserService();
   o: Object;
   // let user: Users;
   constructor(private location: Location, private http: HttpService, private snackbar: MatSnackBar) { }
 
   ngOnInit(): void {
-    // this.user.name = "XYZ";
-    // this.user.name = "Aman";
-    // this.user.id = this.location.getState();
-
-    // this.o = this.location.getState();
-    // console.log("On Init==" + this.o['userId']);
-    // console.log("On Init==" + this.location.getState()['userId']);
-
-    // this.http.getUserDetails(this.location.getState()['userId']).subscribe(responseData => {
-    //   this.user = responseData['data'];
-    // });
     console.log("sesison user id===" + sessionStorage.getItem('userId'));
     this.http.getUserDetails(sessionStorage.getItem('userId')).subscribe(responseData => {
       this.user = responseData['data'];
     });
-
-
   }
 
   ngOnDestroy(): void {
-    //Called once, before the instance is destroyed.
-    //Add 'implements OnDestroy' to the class.
     console.log("onDestroy===" + this.user.name);
     sessionStorage.removeItem('userId');
   }

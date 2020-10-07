@@ -15,9 +15,8 @@
         <!-- <mat-card-title>  -->
         <!-- <mat-card-content> -->
         <div class="col-md-2">
-            <img class="userProfileImage"
-                src="https://smedia2.intoday.in/indiatoday/images/stories/2015April/randeep-story-650_041315045800.jpg"
-                alt="Photo of a Shiba Inu">
+            <img class="userProfileImage" src="{{user.profilePictureUrl}}"
+                onerror="this.onerror=null; this.src='https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png'">
         </div>
         <!-- </mat-card-title> -->
         <!-- <div mat-card-avatar ></div> -->
@@ -58,15 +57,19 @@
                         </mat-form-field>
                         <mat-form-field class="example-full-width">
                             <mat-label>Phone Number
+
                                 <span *ngIf="user.phoneNumberVerified;else notVerified"
                                     class="material-icons green">check_circle</span>
                                 <ng-template #notVerified> <span class="material-icons red">
                                         highlight_off
                                     </span></ng-template>
+
                             </mat-label>
 
                             <input matInput placeholder="Ex. 9876543210" name="user.phoneNumber"
                                 [(ngModel)]="user.phoneNumber" #phoneNumber="ngModel">
+
+
                         </mat-form-field>
                     </div>
                     <div class="col">
@@ -105,8 +108,8 @@
                             <button *ngIf="user.isActive;else unBlock" (click)="blockUnBlockUser()" type="button"
                                 mat-raised-button color="warn">Block</button>
                             <ng-template #unBlock>
-                                <button (click)="blockUnBlockUser()" type="button"
-                                mat-raised-button color="warn">UnBlock</button>
+                                <button (click)="blockUnBlockUser()" type="button" mat-raised-button
+                                    color="warn">UnBlock</button>
                             </ng-template>
                         </div>
 
@@ -134,7 +137,32 @@
     <!-- <div class="row"> -->
     <!-- mat-align-tabs="start" -->
     <mat-tab-group dynamicHeight mat-stretch-tabs>
-        <mat-tab label="Addresses"> Content 1 </mat-tab>
+        <mat-tab label="Addresses">
+            <!-- <li *ngFor="let item of user.address"> -->
+            <div *ngFor="let item of user.address" class="addressDiv">
+                <div><span class="addressType">{{item.addressType}} </span>
+                    <span *ngIf="item.isPrimary" class="addressPrimary">Primary</span>
+                </div>
+                <div style="margin-top: 10px;"><span class="addressName">{{item.name}} </span> <span
+                        class="addressPhoneNumber">{{item.phoneNumber}}</span></div>
+                <div>
+                    <span class="addressDescription"> {{item.houseNo}}, <span *ngIf="item.landmark">
+                            {{item.landmark}},</span>
+                        {{item.area}}, {{item.city}}, {{item.state}} - <span
+                            class="addressPincode">{{item.pincode}}</span></span>
+                    <!-- <span class="addressDescription">{{item.city}}, {{item.state}} - <span
+                            class="addressPincode">{{item.pincode}}</span></span> -->
+                </div>
+                <mat-divider></mat-divider>
+            </div>
+            <div *ngIf="!user.address.length">
+                <h4>No address Available</h4>
+            </div>
+
+            <!-- {{item.state}},{{item.city}} -->
+            <!-- </li> -->
+
+        </mat-tab>
         <mat-tab label="Products Bidded"> Content 2 </mat-tab>
         <mat-tab label="Products Winned"> Content 3 </mat-tab>
         <mat-tab label="Transaction"> Content 4 </mat-tab>
