@@ -7,40 +7,6 @@ import { Router } from '@angular/router';
 import { UserService } from 'src/app/shared/models/user.service';
 import { HttpService } from 'src/app/http.service';
 
-
-// export class Users {
-//   id: number;
-//   name: string;
-//   emailId: string;
-//   phoneNumber: string;
-//   points: number;
-
-//   constructor(id: number, name: string, emailId: string, phoneNumber: string, points: number) {
-//     this.id = id;
-//     this.name = name;
-
-//     this.emailId = emailId;
-//     this.phoneNumber = phoneNumber;
-
-//     this.points = points;
-
-//   }
-// }
-
-// const ELEMENT_DATA: PeriodicElement[] = [
-//   { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-//   { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-//   { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-//   { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-//   { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-//   { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-//   { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-//   { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-//   { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-//   { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
-// ];
-
-
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -61,7 +27,7 @@ export class UsersComponent implements OnInit {
   ngOnInit(): void {
     this.http.getAllUser().subscribe(responseData => {
       this.user = responseData['data'];
-      console.log(responseData);
+      // console.log(responseData);
       this.dataSource = new MatTableDataSource<UserService>(this.user);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
@@ -71,7 +37,7 @@ export class UsersComponent implements OnInit {
   getUserDetail(id: string) {
     // alert("User with ID=" + id + " clicked");
     sessionStorage.setItem('userId', id);
-    console.log("after click=" + sessionStorage.getItem('userId'));
+    // console.log("after click=" + sessionStorage.getItem('userId'));
     this.router.navigate(['dashboard/userDetail'], { state: { userId: id } });
   }
 

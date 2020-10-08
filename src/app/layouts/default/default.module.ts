@@ -31,6 +31,9 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDividerModule } from '@angular/material/divider';
+import { AddressesTabComponent } from 'src/app/modules/addresses-tab/addresses-tab.component';
+import { WinningProductsTabComponent } from 'src/app/modules/winning-products-tab/winning-products-tab.component';
+import { BidsTabComponent } from 'src/app/modules/bids-tab/bids-tab.component';
 
 
 
@@ -42,7 +45,10 @@ import { MatDividerModule } from '@angular/material/divider';
     ActiveProductsComponent,
     ExpiredProductsComponent,
     UpcomingProductsComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    AddressesTabComponent,
+    BidsTabComponent,
+    WinningProductsTabComponent
   ],
   imports: [
     CommonModule,

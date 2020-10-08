@@ -1,4 +1,7 @@
 import { Injectable } from '@angular/core';
+import { AddressService } from './address.service';
+import { BidsService } from './bids.service';
+import { ProductService } from './product.service';
 
 @Injectable({
   providedIn: 'root'
@@ -6,11 +9,17 @@ import { Injectable } from '@angular/core';
 export class UserService {
 
   id: number;
+
   name: string;
+
   emailId: string;
+
   phoneNumber: string;
+
   points: number;
+
   gender: string;
+
   referralCode: string;
 
   referredCode: string;
@@ -21,11 +30,13 @@ export class UserService {
 
   phoneNumberVerified: Boolean;
 
-  address: Object[];
-
   isActive: Boolean;
 
+  address: AddressService[];
 
+  bids: BidsService[];
+
+  product: ProductService[];
 
   constructor() {
     this.gender = "Not Available";

@@ -1,40 +1,11 @@
-<!-- <div class="container">
-    <div class="row">
-        <mat-card>
-            <mat-card-title>Suresh Sharma<br>
-                <img  mat-card-sm-image
-                    src="https://material.angular.io/assets/img/examples/shiba2.jpg">
-            </mat-card-title>
-        </mat-card>
-    </div>
-</div> -->
 <div class="container">
     <div class="row">
-        <!-- <mat-card class="example-card"> -->
-        <!-- <mat-card-header> -->
-        <!-- <mat-card-title>  -->
-        <!-- <mat-card-content> -->
         <div class="col-md-2">
             <img class="userProfileImage" src="{{user.profilePictureUrl}}"
                 onerror="this.onerror=null; this.src='https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png'">
         </div>
-        <!-- </mat-card-title> -->
-        <!-- <div mat-card-avatar ></div> -->
-
-        <!-- <mat-card-title>Suresh Sharma</mat-card-title>
-                <mat-card-subtitle>Email: xyz@gmail.com</mat-card-subtitle>
-                <mat-card-subtitle>Phone: 987654321</mat-card-subtitle> -->
-        <!-- </mat-card-header> -->
-
-        <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-                alt="Photo of a Shiba Inu"> -->
-        <!-- <mat-card-content> -->
         <div class="col-md-10">
             <form class="example-form" (ngSubmit)="updateUser()">
-                <!-- <mat-form-field class="example-full-width">
-                        <img mat-card-avatar src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-                            alt="Photo of a Shiba Inu">
-                    </mat-form-field> -->
                 <div class="row">
                     <div class="col">
                         <mat-form-field class="example-full-width">
@@ -50,33 +21,24 @@
                                         highlight_off
                                     </span></ng-template>
                             </mat-label>
-
                             <input matInput placeholder="Ex. abc@gmail.com" name="user.emailId"
                                 [(ngModel)]="user.emailId" #emailId="ngModel">
-
                         </mat-form-field>
                         <mat-form-field class="example-full-width">
                             <mat-label>Phone Number
-
                                 <span *ngIf="user.phoneNumberVerified;else notVerified"
                                     class="material-icons green">check_circle</span>
                                 <ng-template #notVerified> <span class="material-icons red">
                                         highlight_off
                                     </span></ng-template>
-
                             </mat-label>
-
                             <input matInput placeholder="Ex. 9876543210" name="user.phoneNumber"
                                 [(ngModel)]="user.phoneNumber" #phoneNumber="ngModel">
-
-
                         </mat-form-field>
                     </div>
                     <div class="col">
                         <mat-form-field class="example-full-width">
                             <mat-label>Gender</mat-label>
-                            <!-- <mat-label>Male</mat-label> -->
-
                             <input *ngIf="!user.gender" matInput value="Not Available" disabled>
                             <input *ngIf="user.gender" matInput placeholder="Ex. Male" name="user.gender"
                                 [(ngModel)]="user.gender" #gender="ngModel" disabled>
@@ -85,13 +47,11 @@
                             <mat-label>Points</mat-label>
                             <input matInput placeholder="Ex. 10" name="user.points" [(ngModel)]="user.points"
                                 #points="ngModel" disabled>
-                            <!-- <textarea matInput placeholder="Ex. It makes me feel...">35</textarea> -->
                         </mat-form-field>
                         <mat-form-field class="example-full-width">
                             <mat-label>Referral Code</mat-label>
                             <input matInput placeholder="Ex. xYzAB" name="user.referralCode"
                                 [(ngModel)]="user.referralCode" #referralCode="ngModel" disabled>
-                            <!-- <textarea matInput placeholder="Ex. It makes me feel...">35</textarea> -->
                         </mat-form-field>
                     </div>
                     <div class="col">
@@ -100,11 +60,9 @@
                             <input *ngIf="!user.referredCode" matInput value="Not Available" disabled>
                             <input *ngIf="user.referredCode" matInput placeholder="Ex. xYzAB" name="user.referredCode"
                                 [(ngModel)]="user.referredCode" #referredCode="ngModel" disabled>
-                            <!-- <textarea matInput placeholder="Ex. It makes me feel...">35</textarea> -->
                         </mat-form-field>
                         <div class="buttonDiv">
                             <button type="submit" mat-raised-button class="saveButton">Update</button>
-
                             <button *ngIf="user.isActive;else unBlock" (click)="blockUnBlockUser()" type="button"
                                 mat-raised-button color="warn">Block</button>
                             <ng-template #unBlock>
@@ -116,60 +74,18 @@
                     </div>
                 </div>
             </form>
-
         </div>
-        <!-- </mat-card-content> -->
-        <!-- <p>Email:sureshsharma@gmail.com</p>
-                <p>Phone:sureshsharma@gmail.com</p> -->
-
-        <!-- <p>
-        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-        bred for hunting.
-      </p> -->
-        <!-- </mat-card-content> -->
-        <!-- <mat-card-actions>
-      <button mat-button>LIKE</button>
-      <button mat-button>SHARE</button>
-    </mat-card-actions> -->
-        <!-- </mat-card> -->
     </div>
-    <!-- <div class="row"> -->
-    <!-- mat-align-tabs="start" -->
     <mat-tab-group dynamicHeight mat-stretch-tabs>
         <mat-tab label="Addresses">
-            <!-- <li *ngFor="let item of user.address"> -->
-            <div *ngFor="let item of user.address" class="addressDiv">
-                <div><span class="addressType">{{item.addressType}} </span>
-                    <span *ngIf="item.isPrimary" class="addressPrimary">Primary</span>
-                </div>
-                <div style="margin-top: 10px;"><span class="addressName">{{item.name}} </span> <span
-                        class="addressPhoneNumber">{{item.phoneNumber}}</span></div>
-                <div>
-                    <span class="addressDescription"> {{item.houseNo}}, <span *ngIf="item.landmark">
-                            {{item.landmark}},</span>
-                        {{item.area}}, {{item.city}}, {{item.state}} - <span
-                            class="addressPincode">{{item.pincode}}</span></span>
-                    <!-- <span class="addressDescription">{{item.city}}, {{item.state}} - <span
-                            class="addressPincode">{{item.pincode}}</span></span> -->
-                </div>
-                <mat-divider></mat-divider>
-            </div>
-            <div *ngIf="!user.address.length">
-                <h4>No address Available</h4>
-            </div>
-
-            <!-- {{item.state}},{{item.city}} -->
-            <!-- </li> -->
-
+            <app-addresses-tab [address]="user.address"></app-addresses-tab>
         </mat-tab>
-        <mat-tab label="Products Bidded"> Content 2 </mat-tab>
-        <mat-tab label="Products Winned"> Content 3 </mat-tab>
+        <mat-tab label="Products Bidded">
+            <app-bids-tab [bids]="user.bids"></app-bids-tab>
+        </mat-tab>
+        <mat-tab label="Products Winned">
+            <app-winning-products-tab [products]="user.product">   </app-winning-products-tab>
+        </mat-tab>
         <mat-tab label="Transaction"> Content 4 </mat-tab>
     </mat-tab-group>
-    <!-- </div> -->
 </div>
-
-<!-- Copyright 2020 Google LLC. All Rights Reserved.
-      Use of this source code is governed by an MIT-style license that
-      can be found in the LICENSE file at http://angular.io/license -->

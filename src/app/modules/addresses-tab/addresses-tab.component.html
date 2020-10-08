@@ -1,0 +1,16 @@
+<div *ngFor="let item of address" class="addressDiv">
+    <div><span class="addressType">{{item.addressType}} </span>
+        <span *ngIf="item.isPrimary" class="addressPrimary">Primary</span>
+    </div>
+    <div style="margin-top: 10px;"><span class="addressName">{{item.name}} </span> <span
+            class="addressPhoneNumber">{{item.phoneNumber}}</span></div>
+    <div>
+        <span class="addressDescription"> {{item.houseNo}}, <span *ngIf="item.landmark">
+                {{item.landmark}},</span>
+            {{item.area}}, {{item.city}}, {{item.state}} - <span class="addressPincode">{{item.pincode}}</span></span>
+    </div>
+    <mat-divider></mat-divider>
+</div>
+<div *ngIf="address?.length<1">
+    <h4>No address Available</h4>
+</div>

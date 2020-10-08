@@ -17,9 +17,12 @@ export class UserDetailComponent implements OnInit {
   constructor(private location: Location, private http: HttpService, private snackbar: MatSnackBar) { }
 
   ngOnInit(): void {
-    console.log("sesison user id===" + sessionStorage.getItem('userId'));
+    // console.log("sesison user id===" + sessionStorage.getItem('userId'));
     this.http.getUserDetails(sessionStorage.getItem('userId')).subscribe(responseData => {
       this.user = responseData['data'];
+
+      // sessionStorage.setItem('bids', JSON.stringify(this.user.bids));  //testing only
+      // console.log("bids in user details"+this.user.bids['0']['productId']);
     });
   }
 
@@ -32,10 +35,10 @@ export class UserDetailComponent implements OnInit {
     this.http.updateUser(this.user).subscribe(responseData => {
       const status = responseData['status'];
       if (status === "Success") {
-        console.log("updated successfully");
+        // console.log("updated successfully");
         this.snackbar.open("Updated Successfully !", "OK", { duration: 2000, });
       } else {
-        console.log("Error occurred");
+        // console.log("Error occurred");
         this.snackbar.open("Oops ! Error Occurred", "OK", { duration: 2000, });
       }
     });
