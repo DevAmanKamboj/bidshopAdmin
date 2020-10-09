@@ -35,6 +35,8 @@ import { AddressesTabComponent } from 'src/app/modules/addresses-tab/addresses-t
 import { WinningProductsTabComponent } from 'src/app/modules/winning-products-tab/winning-products-tab.component';
 import { BidsTabComponent } from 'src/app/modules/bids-tab/bids-tab.component';
 
+import { ProductDetailsComponent } from 'src/app/modules/product-details/product-details.component';
+
 
 
 @NgModule({
@@ -48,7 +50,8 @@ import { BidsTabComponent } from 'src/app/modules/bids-tab/bids-tab.component';
     UserDetailComponent,
     AddressesTabComponent,
     BidsTabComponent,
-    WinningProductsTabComponent
+    WinningProductsTabComponent,
+    ProductDetailsComponent
   ],
   imports: [
     CommonModule,

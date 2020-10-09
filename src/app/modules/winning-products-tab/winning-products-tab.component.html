@@ -1,25 +1,39 @@
-<div *ngIf="bids?.length>=1">
+<div *ngIf="products?.length>=1">
     <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
-        <ng-container matColumnDef="productId">
+        <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Product Id </th>
             <td mat-cell *matCellDef="let element"> {{element.id}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="bidTime">
+        <ng-container matColumnDef="bidType">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Bid Type </th>
             <td mat-cell *matCellDef="let element"> {{element.bidType}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="price">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Bid Amount </th>
-            <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+        <ng-container matColumnDef="winningPrice">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Winning Price </th>
+            <td mat-cell *matCellDef="let element"> {{element.winningPrice}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="maxBidPrice">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Max Bid Price </th>
+            <td mat-cell *matCellDef="let element"> {{element.maxBidPrice}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="claimed">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Claimed </th>
+            <td mat-cell *matCellDef="let element">
+                <span *ngIf="element.claimed;else notClaimed">Yes</span>
+                <!-- {{element.claimed}}  -->
+                <ng-template #notClaimed>No</ng-template>
+            </td>
         </ng-container>
 
         <ng-container matColumnDef="action">
             <th mat-header-cell *matHeaderCellDef> Action </th>
             <td *matCellDef="let element">
-                <button mat-raised-button color="primary" (click)="getProductDetail(element.productId)">View
+                <button mat-raised-button color="primary" (click)="getProductDetail(element.id)">View
                     Product</button>
             </td>
         </ng-container>
@@ -30,8 +44,8 @@
     </table>
     <mat-paginator [pageSizeOptions]="[5, 10,15,20]" showFirstLastButtons></mat-paginator>
 </div>
-<div *ngIf="bids?.length<1">
-    <h4>No Bids Done</h4>
+<div *ngIf="products?.length<1">
+    <h4>No Winning Product Available</h4>
 </div>
 <!-- <div>
     {{bids['0']['productId']}}

@@ -16,7 +16,7 @@ import { ProductService } from 'src/app/shared/models/product.service';
 })
 export class WinningProductsTabComponent implements OnInit {
   @Input() products: ProductService[];
-  displayedColumns: string[] = ['id', 'bidType', 'winningPrice', 'action'];
+  displayedColumns: string[] = ['id', 'bidType', 'winningPrice', 'maxBidPrice', 'claimed', 'action'];
   dataSource;
   data: BidsService[];
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -33,6 +33,9 @@ export class WinningProductsTabComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
 
+  }
+  getProductDetail(productId: string) {
+    alert("Product id: " + productId + " clicked");
   }
 
 }
