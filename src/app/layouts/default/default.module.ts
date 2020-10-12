@@ -34,9 +34,11 @@ import { MatDividerModule } from '@angular/material/divider';
 import { AddressesTabComponent } from 'src/app/modules/addresses-tab/addresses-tab.component';
 import { WinningProductsTabComponent } from 'src/app/modules/winning-products-tab/winning-products-tab.component';
 import { BidsTabComponent } from 'src/app/modules/bids-tab/bids-tab.component';
-
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { ProductDetailsComponent } from 'src/app/modules/product-details/product-details.component';
-
+import { CarouselModule, WavesModule } from 'angular-bootstrap-md';
+// import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 
 @NgModule({
@@ -73,7 +75,12 @@ import { ProductDetailsComponent } from 'src/app/modules/product-details/product
     MatTabsModule,
     MatSnackBarModule,
     MatSlideToggleModule,
-    MatDividerModule
+    MatDividerModule,
+    CarouselModule,
+    WavesModule,
+    FontAwesomeModule,
+    MDBBootstrapModule,
+    // AngularFontAwesomeModule
   ]
 })
 export class DefaultModule { }

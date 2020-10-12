@@ -108,6 +108,7 @@ img {
 .colors {
   text-transform: UPPERCASE;
   font-weight: bold;
+  color:blue;
 }
 
 .checked,
@@ -116,7 +117,8 @@ img {
 }
 
 .product-title,
-.rating,
+.view,
+.bids,
 .product-description,
 .price,
 .vote,
@@ -222,4 +224,10 @@ img {
   }
 }
 
+.bidIcon{
+font-size: 11px;
+margin-left: 10px;
+}
+
 /*# sourceMappingURL=style.css.map */
+
