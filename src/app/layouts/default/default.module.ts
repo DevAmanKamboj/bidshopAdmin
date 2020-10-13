@@ -33,7 +33,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDividerModule } from '@angular/material/divider';
 import { AddressesTabComponent } from 'src/app/modules/addresses-tab/addresses-tab.component';
 import { WinningProductsTabComponent } from 'src/app/modules/winning-products-tab/winning-products-tab.component';
-import { BidsTabComponent } from 'src/app/modules/bids-tab/bids-tab.component';
+import { UserBidsTabComponent } from 'src/app/modules/user-bids-tab/user-bids-tab.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { ProductDetailsComponent } from 'src/app/modules/product-details/product-details.component';
 import { CarouselModule, WavesModule } from 'angular-bootstrap-md';
@@ -51,7 +51,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     UpcomingProductsComponent,
     UserDetailComponent,
     AddressesTabComponent,
-    BidsTabComponent,
+    UserBidsTabComponent,
     WinningProductsTabComponent,
     ProductDetailsComponent
   ],

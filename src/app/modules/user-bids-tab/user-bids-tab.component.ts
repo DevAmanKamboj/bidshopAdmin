@@ -7,11 +7,11 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
-  selector: 'app-bids-tab',
-  templateUrl: './bids-tab.component.html',
-  styleUrls: ['./bids-tab.component.scss']
+  selector: 'app-user-bids-tab',
+  templateUrl: './user-bids-tab.component.html',
+  styleUrls: ['./user-bids-tab.component.scss']
 })
-export class BidsTabComponent implements OnInit {
+export class UserBidsTabComponent implements OnInit {
 
   @Input() bids: BidsService[];
   displayedColumns: string[] = ['productId', 'bidTime', 'price', 'action'];
@@ -32,7 +32,7 @@ export class BidsTabComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   // console.log("after ngOnInit=" + this.bids);
+    // console.log("after ngOnInit=" + this.bids);
   }
   // ngAfterViewInit(): void {
   //   console.log("after ngAfterViewInit=" + this.bids);

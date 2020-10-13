@@ -108,15 +108,14 @@ img {
 .colors {
   text-transform: UPPERCASE;
   font-weight: bold;
-  color:blue;
+  color: #007acc;
 }
 
 .checked,
 .price span {
-  color: #ff9f1a;
+  color: black;
 }
 
-.product-title,
 .view,
 .bids,
 .product-description,
@@ -224,10 +223,51 @@ img {
   }
 }
 
-.bidIcon{
-font-size: 11px;
-margin-left: 10px;
+.bidIcon {
+  font-size: 11px;
+  margin-left: 10px;
 }
 
-/*# sourceMappingURL=style.css.map */
+.t4 {
+  tab-size: 4;
+}
 
+.timeTitle {
+  font-weight: bold;
+  color: #007acc;
+}
+
+.time {
+  // font-weight: bold;
+}
+
+.timeLeft {
+  color: red;
+  font-weight: bold;
+}
+
+.example-card {
+  // background-color: red;
+  // background: #eee;
+  max-width: 400px;
+  max-height: 150px;
+ 
+  // background-color: "red";
+  // background-image: url('https://st.depositphotos.com/1031343/3148/v/950/depositphotos_31481847-stock-illustration-winner-stamp.jpg');
+}
+
+.winnerBackground {
+  background-size: contain;
+  // background-repeat: no-repeat;
+  
+  background-image: url('../../../assets/images/winner_background.png');
+}
+
+
+
+
+//  .price-numeric{
+//    color:red;
+
+//  }
+/*# sourceMappingURL=style.css.map */

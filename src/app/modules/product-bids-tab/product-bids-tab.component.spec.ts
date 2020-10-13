@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BidsTabComponent } from './bids-tab.component';
+import { ProductBidsTabComponent } from './product-bids-tab.component';
 
-describe('BidsTabComponent', () => {
-  let component: BidsTabComponent;
-  let fixture: ComponentFixture<BidsTabComponent>;
+describe('ProductBidsTabComponent', () => {
+  let component: ProductBidsTabComponent;
+  let fixture: ComponentFixture<ProductBidsTabComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BidsTabComponent ]
+      declarations: [ ProductBidsTabComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BidsTabComponent);
+    fixture = TestBed.createComponent(ProductBidsTabComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
