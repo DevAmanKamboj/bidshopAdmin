@@ -136,7 +136,7 @@
 
                                 <mat-card-content>
                                     <h5 style="font-weight: bold;color:green;">Winning Price: 600, Claimed: No</h5>
-                                    <button mat-raised-button color="primary">View Profile</button>
+                                    <button mat-raised-button color="primary" >View Profile</button>
                                 </mat-card-content>
                                 <!-- <mat-card-actions>
                                     <button mat-button>View Profile</button>
@@ -152,10 +152,12 @@
             </div>
         </div>
     </div>
-    
-    <mat-tab-group dynamicHeight mat-stretch-tabs>
+
+    <!-- <mat-divider></mat-divider> -->
+
+    <mat-tab-group class="tabs" dynamicHeight mat-stretch-tabs>
         <mat-tab label="Bids">
-            No bidding available
+            <app-product-bids-tab></app-product-bids-tab>
             <!-- <app-addresses-tab ></app-addresses-tab> -->
         </mat-tab>
         <!-- <mat-tab label="Products Bidded">

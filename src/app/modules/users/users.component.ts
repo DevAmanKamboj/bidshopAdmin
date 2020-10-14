@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/shared/models/user.service';
 import { HttpService } from 'src/app/http.service';
+import { DataService } from 'src/app/shared/data.service';
 
 @Component({
   selector: 'app-users',
@@ -22,7 +23,7 @@ export class UsersComponent implements OnInit {
 
   ngAfterViewInit() {
   }
-  constructor(private http: HttpService, private router: Router) { }
+  constructor(private http: HttpService, private router: Router, private dataService: DataService) { }
 
   ngOnInit(): void {
     this.http.getAllUser().subscribe(responseData => {
@@ -36,9 +37,9 @@ export class UsersComponent implements OnInit {
 
   getUserDetail(id: string) {
     // alert("User with ID=" + id + " clicked");
-    sessionStorage.setItem('userId', id);
+    // sessionStorage.setItem('userId', id);
+    this.dataService.userId = id;
     // console.log("after click=" + sessionStorage.getItem('userId'));
     this.router.navigate(['dashboard/userDetail'], { state: { userId: id } });
   }
-
 }

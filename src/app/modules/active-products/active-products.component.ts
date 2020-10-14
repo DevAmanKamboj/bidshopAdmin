@@ -5,7 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 
 import { HttpService } from 'src/app/http.service';
-
+import { DataService } from 'src/app//shared/data.service';
 import { ProductService } from 'src/app/shared/models/product.service';
 
 @Component({
@@ -21,7 +21,7 @@ export class ActiveProductsComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private http: HttpService, private router: Router) { }
+  constructor(private http: HttpService, private router: Router, private dataService: DataService) { }
 
   ngOnInit(): void {
     this.http.getAllActiveProducts().subscribe(responseData => {
@@ -32,8 +32,9 @@ export class ActiveProductsComponent implements OnInit {
       this.dataSource.sort = this.sort;
     });
   }
-  getProductDetail(id: number) {
-    alert("Product with ID=" + id + " clicked");
+  getProductDetail(id: string) {
+    // alert("Product with ID=" + id + " clicked");
+    this.dataService.productId = id;
     this.router.navigate(['dashboard/productDetails']);
   }
 }

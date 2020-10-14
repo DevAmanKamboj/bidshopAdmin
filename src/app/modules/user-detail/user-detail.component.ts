@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { HttpService } from 'src/app/http.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from 'src/app/shared/models/user.service';
+import { DataService } from 'src/app/shared/data.service';
 
 @Component({
   selector: 'app-user-detail',
@@ -14,21 +15,20 @@ export class UserDetailComponent implements OnInit {
   user = new UserService();
   o: Object;
   // let user: Users;
-  constructor(private location: Location, private http: HttpService, private snackbar: MatSnackBar) { }
+  constructor(private location: Location, private http: HttpService, private snackbar: MatSnackBar, private dataService: DataService) { }
 
   ngOnInit(): void {
-    // console.log("sesison user id===" + sessionStorage.getItem('userId'));
-    this.http.getUserDetails(sessionStorage.getItem('userId')).subscribe(responseData => {
+    // this.http.getUserDetails(sessionStorage.getItem('userId')).subscribe(responseData => {
+    //   this.user = responseData['data'];
+    // });
+    this.http.getUserDetails(this.dataService.userId).subscribe(responseData => {
       this.user = responseData['data'];
-
-      // sessionStorage.setItem('bids', JSON.stringify(this.user.bids));  //testing only
-      // console.log("bids in user details"+this.user.bids['0']['productId']);
     });
   }
 
   ngOnDestroy(): void {
     console.log("onDestroy===" + this.user.name);
-    sessionStorage.removeItem('userId');
+    // sessionStorage.removeItem('userId');
   }
 
   updateUser() {

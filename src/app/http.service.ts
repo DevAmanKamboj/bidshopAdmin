@@ -33,4 +33,9 @@ export class HttpService {
     const headers = new HttpHeaders().set("Authorization", sessionStorage.getItem('token'));
     return this.http.post('http://localhost:8080/user/updateFromAdmin', user, { headers });
   }
+
+  getProductDetails(id: string) {
+    const headers = new HttpHeaders().set("Authorization", sessionStorage.getItem('token'));
+    return this.http.get('http://localhost:8080/product/get/' + id, { headers });
+  }
 }

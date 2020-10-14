@@ -37,6 +37,8 @@ import { UserBidsTabComponent } from 'src/app/modules/user-bids-tab/user-bids-ta
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { ProductDetailsComponent } from 'src/app/modules/product-details/product-details.component';
 import { CarouselModule, WavesModule } from 'angular-bootstrap-md';
+
+import { ProductBidsTabComponent } from 'src/app/modules/product-bids-tab/product-bids-tab.component';
 // import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
@@ -53,7 +55,8 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     AddressesTabComponent,
     UserBidsTabComponent,
     WinningProductsTabComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    ProductBidsTabComponent
   ],
   imports: [
     CommonModule,
