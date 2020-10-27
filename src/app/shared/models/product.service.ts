@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BidsService } from './bids.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,16 +16,17 @@ export class ProductService {
   createdDateTime: Date;
   description: string;
   owner: string;
-  productCategoryId: number;
+  productCategoryId: string;
   noOfBids: number;
   noOfViewers: number;
-  winnerId: number;
+  winnerId: string;
   winnerName: string;
   winningPrice: number;
   winnerImageUrl: string;
   claimed: Boolean;
   properties: string;
   maxPriceBidDone: Boolean;
+  bids: BidsService[];
   constructor() {
   }
 }

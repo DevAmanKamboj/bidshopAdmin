@@ -5,6 +5,8 @@ import { MatPaginator } from '@angular/material/paginator';
 
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
+import { DataService } from 'src/app/shared/data.service';
 
 @Component({
   selector: 'app-user-bids-tab',
@@ -21,7 +23,7 @@ export class UserBidsTabComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
 
-  constructor() { }
+  constructor(private router:Router,private dataService:DataService) { }
 
   ngOnChanges(): void {
     //console.log("after ngOnChanges=" + this.bids);
@@ -42,6 +44,7 @@ export class UserBidsTabComponent implements OnInit {
   // }
 
   getProductDetail(productId: string) {
-    alert("Product id: " + productId + " clicked");
+    this.dataService.productId = productId;
+    this.router.navigate(['dashboard/productDetails']);
   }
 }

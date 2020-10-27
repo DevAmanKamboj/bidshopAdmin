@@ -38,4 +38,18 @@ export class HttpService {
     const headers = new HttpHeaders().set("Authorization", sessionStorage.getItem('token'));
     return this.http.get('http://localhost:8080/product/get/' + id, { headers });
   }
+  getProductCategory(id: string) {
+    const headers = new HttpHeaders().set("Authorization", sessionStorage.getItem('token'));
+    return this.http.get('http://localhost:8080/productCategory/get/' + id, { headers });
+  }
+
+  getAllProductCategory() {
+    const headers = new HttpHeaders().set("Authorization", sessionStorage.getItem('token'));
+    return this.http.get('http://localhost:8080/productCategory/getAll');
+  }
+
+  addProduct(product: Object) {
+    const headers = new HttpHeaders().set("Authorization", sessionStorage.getItem('token'));
+    return this.http.post('http://localhost:8080/product/add', product, { headers });
+  }
 }

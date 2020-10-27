@@ -45,7 +45,8 @@
                     </div>
                 </div>
                 <div class="details col-md-6">
-                    <h3 class="product-title">One plus and Iphone<p style="color:black;font-size:12px;">Electronics
+                    <h3 class="product-title">{{product.productName}}<p style="color:black;font-size:12px;">
+                            {{productCategory.categoryName}}
                         </p>
                     </h3>
 
@@ -56,15 +57,14 @@
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star"></span>
                             <span class="fa fa-star"></span> -->
-                            <span><i class="fa fa-eye"></i> 300 </span>
-                            <span><span class="material-icons bidIcon">pan_tool</span> 250
+                            <span><i class="fa fa-eye"></i> {{product.noOfViewers}} </span>
+                            <span><span class="material-icons bidIcon">pan_tool</span> {{product.noOfBids}}
 
                             </span>
                         </div>
                         <!-- <span class="review-no">41 reviews</span> -->
                     </div>
-                    <p class="product-description">Suspendisse quos? Tempus cras iure temporibus? Eu laudantium cubilia
-                        sem sem! Repudiandae et! Massa senectus enim minim sociosqu delectus posuere.</p>
+                    <p class="product-description">{{product.description}}</p>
                     <!-- <h4 class="price">Min Bid Price: <span>Rs 180</span> Max Bid Price: <span>Rs 300</span></h4> -->
                     <!-- <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p> -->
                     <!-- <h4 class="price">Max Bid price: <span>$180</span></h4> -->
@@ -85,7 +85,8 @@
                         <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
                     </div> -->
                     <div>
-                        <h4 class="price">Min Bid Price: <span>180</span>, Max Bid Price: <span>300</span>
+                        <h4 class="price">Min Bid Price: <span>{{product.minBidPrice}}</span>, Max Bid Price:
+                            <span>{{product.maxBidPrice}}</span>
                             <!-- , Winning Bid Price: <span style="color:orangered;">800</span> -->
                         </h4>
                     </div>
@@ -93,17 +94,19 @@
                     <div class="row">
                         <div class="col-md-6">
                             <h4>
-                                <span class="timeTitle">Start Time: </span><span class="time">2020-03-07 05:15:00</span>
+                                <span class="timeTitle">Start Time: </span><span
+                                    class="time">{{product.startDateTime | date:'yyyy-MM-dd HH:mm:ss'}}</span>
                             </h4>
                             <h4>
-                                <span class="timeTitle">End Time: </span> <span class="time"> 2020-10-30 01:15:00</span>
+                                <span class="timeTitle">End Time: </span> <span class="time">
+                                    {{product.endDateTime | date:'yyyy-MM-dd HH:mm:ss'}}</span>
                             </h4>
-                            <h4>
+                            <!-- <h4>
                                 <span class="timeTitle">Time left : </span> <span class="timeLeft">2020-10-30
                                     01:15:00</span>
-                            </h4>
+                            </h4> -->
                         </div>
-                        <div class="col-md-6">
+                        <div *ngIf="product.winnerId!=null" class="col-md-6">
 
                             <!-- <div class="card" >                              
                                 <div class="view overlay">
@@ -124,19 +127,22 @@
                             </div> -->
                             <!-- <div></div> -->
 
-                            <mat-card  class="example-card winnerBackground">
+
+                            <mat-card class="example-card winnerBackground">
                                 <mat-card-header>
                                     <!-- <div mat-card-avatar class="example-header-image"></div> -->
                                     <img mat-card-avatar
-                                        src="https://scontent-del1-1.xx.fbcdn.net/v/t1.0-9/70139608_157230308721066_7658879179370266624_o.jpg?_nc_cat=107&_nc_sid=174925&_nc_ohc=cpwjqojeYegAX8P9oPt&_nc_ht=scontent-del1-1.xx&oh=94eb64608f0947a7082287a7f1a947ea&oe=5FA2CD9C"
+                                        src="{{product.winnerImageUrl}}"
                                         alt="">
-                                    <mat-card-title>Manish Jindal</mat-card-title>
+                                    <mat-card-title>{{product.winnerName}}</mat-card-title>
                                     <!-- <mat-card-subtitle>Winner</mat-card-subtitle> -->
                                 </mat-card-header>
 
                                 <mat-card-content>
-                                    <h5 style="font-weight: bold;color:green;">Winning Price: 600, Claimed: No</h5>
-                                    <button mat-raised-button color="primary" >View Profile</button>
+                                    <h5 style="font-weight: bold;color:green;">Winning Price: {{product.winningPrice}},
+                                        Claimed: {{product.claimed}}</h5>
+                                    <button mat-raised-button color="primary" (click)="viewWinnerProfile()">View
+                                        Profile</button>
                                 </mat-card-content>
                                 <!-- <mat-card-actions>
                                     <button mat-button>View Profile</button>
@@ -157,7 +163,7 @@
 
     <mat-tab-group class="tabs" dynamicHeight mat-stretch-tabs>
         <mat-tab label="Bids">
-            <app-product-bids-tab></app-product-bids-tab>
+            <app-product-bids-tab [bids]="product.bids"></app-product-bids-tab>
             <!-- <app-addresses-tab ></app-addresses-tab> -->
         </mat-tab>
         <!-- <mat-tab label="Products Bidded">

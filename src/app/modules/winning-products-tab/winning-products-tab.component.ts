@@ -7,6 +7,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ProductService } from 'src/app/shared/models/product.service';
+import { Router } from '@angular/router';
+import { DataService } from 'src/app/shared/data.service';
 
 
 @Component({
@@ -22,7 +24,7 @@ export class WinningProductsTabComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor() { }
+  constructor(private router:Router,private dataService:DataService) { }
 
   ngOnInit(): void {
   }
@@ -35,7 +37,8 @@ export class WinningProductsTabComponent implements OnInit {
 
   }
   getProductDetail(productId: string) {
-    alert("Product id: " + productId + " clicked");
+    this.dataService.productId = productId;
+    this.router.navigate(['dashboard/productDetails']);
   }
 
 }

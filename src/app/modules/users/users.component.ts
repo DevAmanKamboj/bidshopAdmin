@@ -40,6 +40,6 @@ export class UsersComponent implements OnInit {
     // sessionStorage.setItem('userId', id);
     this.dataService.userId = id;
     // console.log("after click=" + sessionStorage.getItem('userId'));
-    this.router.navigate(['dashboard/userDetail'], { state: { userId: id } });
+    this.router.navigate(['dashboard/userDetail']);
   }
 }

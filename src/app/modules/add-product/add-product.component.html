@@ -1,0 +1,89 @@
+<div class="container">
+  <form class="example-form">
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field class="example-full-width">
+          <mat-label>Product Name</mat-label>
+          <input matInput placeholder="Ex. Mobile" value="" [(ngModel)]="product.productName" name="productName">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Description</mat-label>
+          <textarea matInput placeholder="Ex. Red color mobile with 6gb ram..." [(ngModel)]="product.description"
+            name="description"></textarea>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Owner</mat-label>
+          <input matInput placeholder="Ex. Rahul or PUMA..." [(ngModel)]="product.owner" name="owner">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Product Category</mat-label>
+          <select matNativeControl [(ngModel)]="product.productCategoryId" name="productCategoryId">
+            <option *ngFor="let category of productCategory" [value]="category.id">{{category.categoryName}}</option>
+          </select>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Bid Type</mat-label>
+          <select matNativeControl [(ngModel)]="product.bidType" name="bidType">
+            <option value="Random">Random</option>
+            <option value="Random">Regular</option>
+          </select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Min Bid Price</mat-label>
+          <input matInput placeholder="Ex. 10" value="" [(ngModel)]="product.minBidPrice" name="minBidPrice"
+            type="number">
+        </mat-form-field>
+
+        <mat-form-field style="margin-left: 10px;">
+          <mat-label>Max Bid Price</mat-label>
+          <input matInput placeholder="Ex. 100" value="" [(ngModel)]="product.maxBidPrice" name="maxBidPrice"
+            type="number">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Bid Start Date Time</mat-label>
+          <input matInput placeholder="" [(ngModel)]="product.startDateTime" name="startDateTime" value=""
+            type="datetime-local">
+        </mat-form-field>
+
+        <mat-form-field style="margin-left: 10px;">
+          <mat-label>Bid End Date Time</mat-label>
+          <input matInput placeholder="" value="" type="datetime-local" [(ngModel)]="product.endDateTime"
+            name="endDateTime">
+        </mat-form-field>
+
+        <!-- <mat-form-field>
+          <mat-label>Bid End Date</mat-label>
+          <input matInput placeholder="" value="" [(ngModel)]="product.endDate" name="endDate" type="date">
+        </mat-form-field>
+
+        <mat-form-field style="margin-left: 10px;">
+          <mat-label>Bid End Time</mat-label>
+          <input matInput placeholder="" value="" type="time" [(ngModel)]="product.endTime" name="endTime">
+        </mat-form-field> -->
+
+        <div class="form-group" class="example-full-width">
+          <mat-label>Choose Images</mat-label>
+          <input type="file" id="file" multiple>
+        </div>
+
+      </div>
+      <div class="col-md-6">
+        <h4>
+          <span class="timeTitle">Start Time: </span><span
+            class="startTime">{{product.startDateTime | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+        </h4>
+        <h4>
+          <span class="timeTitle">End Time: </span> <span class="endTime">
+            {{product.endDateTime | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+        </h4>
+        <button mat-raised-button color="primary" (click)="saveProduct()">Save Product</button>
+      </div>
+    </div>
+  </form>
+</div>
