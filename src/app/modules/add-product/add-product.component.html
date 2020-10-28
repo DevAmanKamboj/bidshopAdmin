@@ -69,7 +69,7 @@
 
         <div class="form-group" class="example-full-width">
           <mat-label>Choose Images</mat-label>
-          <input type="file" id="file" multiple>
+          <input type="file" id="file"  (change)="selectImages($event)">
         </div>
 
       </div>

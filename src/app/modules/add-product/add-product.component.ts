@@ -1,5 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { faImages } from '@fortawesome/free-solid-svg-icons';
 import { HttpService } from 'src/app/http.service';
 import { ProductCategoryService } from 'src/app/shared/models/product-category.service';
 import { ProductService } from 'src/app/shared/models/product.service';
@@ -14,6 +15,7 @@ export class AddProductComponent implements OnInit {
 
   product = new ProductService();
   productCategory: ProductCategoryService[];
+  images: File[];
 
   constructor(private http: HttpService, private datePipe: DatePipe) { }
 
@@ -24,30 +26,38 @@ export class AddProductComponent implements OnInit {
 
   }
 
-  saveProduct() {
-    //new Date(this.product.startDate.getTime);
-    // this.product.startDateTime = this.product.startDate.getTime + this.product.startTime.getTime;
-    //  this.product.startDateTime = new Date(this.product.startDate.getFullYear(), this.product.startDate.getMonth(),this.product.startDate.getDay());
-    // this.product.startDateTime= new Date (this.product.startDate.getTime + this.product.startTime.getTime;
-    // console.log(this.product.startDate.getFullYear);
-    // this.product.startDate = new Date(this.product.startDate);
-    // this.product.startTime = new Date(this.product.startTime);
-    // this.product.startDateTime=new Date(this.product.startDate.getFullYear(),this.product.startDate.getMonth(),this.product.startDate.getDay());
-    // console.log(this.product.startDate.getTime());
-    // this.product.startDateTime=new Date(this.product.startTime.getTime());
-    this.product.startDateTime = new Date(this.product.startDateTime);
-    this.product.startDateTime.toLocaleString();
-    // this.datePipe.transform(this.product.startDateTime,'YYYY-MM-dd HH:mm:ss')
+  selectImages(event) {
+    // Array.from(event.target.files).forEach(element => {
+    //   this.images.push(element);
+    // });
 
-    this.product.endDateTime = new Date(this.product.endDateTime);
-    //  this.datePipe.transform(this.product.endDateTime,'YYYY-MM-dd HH:mm:ss')
-    this.product.endDateTime.toLocaleString();
-    console.log("sent data=" + this.product.startDateTime);
-    this.http.addProduct(this.product).subscribe(responseData => {
-      this.product = responseData['data'];
-      console.log("received data=" + this.product);
+    for(const element of event.target.files){
+      this.images.push(element);
+    }
+    // this.images = event.target.files;
+  }
+
+  saveProduct() {
+    // this.product.startDateTime = new Date(this.product.startDateTime);
+    // this.product.startDateTime.toLocaleString();
+
+
+    // this.product.endDateTime = new Date(this.product.endDateTime);
+
+    // this.product.endDateTime.toLocaleString();
+
+
+
+    this.http.uploadProductImages(1, this.images).subscribe(responseData => {
+      console.log("response Received= " + responseData);
     })
-    console.log(this.product);
+
+    // console.log("sent data=" + this.product.startDateTime);
+    // this.http.addProduct(this.product).subscribe(responseData => {
+    //   this.product = responseData['data'];
+    //   console.log("received data=" + this.product);
+    // })
+    // console.log(this.product);
   }
 
 
