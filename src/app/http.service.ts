@@ -68,10 +68,19 @@ export class HttpService {
     // headers.delete("Content-Type");
     const formData = new FormData();
 
-    formData.append('file', JSON.stringify(file));
+    Array.prototype.forEach.call(file, element => {
+      formData.append('file', element);
+    });
+    formData.append('productId', JSON.stringify(productId));
+
+    // file.forEach(function (element) {
+    //   formData.append('file', element);
+    // });
+
+    // formData.append('file', JSON.stringify(file));
     // console.log(formData.get("file"));
-    console.log(file);
-    console.log(JSON.stringify(file));
+    // console.log(file);
+    // console.log(JSON.stringify(file));
     // formData.append('enctype', 'application/x-www-form-urlencoded');
     // console.log("form data=" + formData.get('file'));
 

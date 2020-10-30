@@ -31,4 +31,10 @@ export class ProductDetailsComponent implements OnInit {
     this.router.navigate(['dashboard/userDetail']);
   }
 
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    this.dataService.productId=null;
+  }
+
 }

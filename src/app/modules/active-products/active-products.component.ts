@@ -37,4 +37,10 @@ export class ActiveProductsComponent implements OnInit {
     this.dataService.productId = id;
     this.router.navigate(['dashboard/productDetails']);
   }
+
+  editProductDetail(id: string) {
+    // alert("Product with ID=" + id + " clicked");
+    this.dataService.productId = id;
+    this.router.navigate(['dashboard/addProduct']);
+  }
 }

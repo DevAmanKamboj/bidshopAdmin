@@ -39,7 +39,8 @@
     <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef> Action </th>
         <td *matCellDef="let element">
-            <button mat-raised-button color="primary" (click)="getProductDetail(element.id)">Edit</button>
+            <button mat-raised-button color="primary" (click)="getProductDetail(element.id)">View</button>
+            <button mat-raised-button style="margin-left:3px;" color="warn" (click)="editProductDetail(element.id)">Edit</button>
         </td>
     </ng-container>
 
