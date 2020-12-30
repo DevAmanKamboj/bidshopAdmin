@@ -26,7 +26,7 @@ const appRoutes: Routes = [];
     HttpClientModule,
     DefaultModule,
     SharedModule,
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes, { relativeLinkResolution: 'legacy' }),
     BrowserAnimationsModule
   ],
   providers: [],
