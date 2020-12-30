@@ -20,6 +20,8 @@ import { UserDetailComponent } from 'src/app/modules/user-detail/user-detail.com
 import { ProductDetailsComponent } from 'src/app/modules/product-details/product-details.component';
 
 import { AddProductComponent } from 'src/app/modules/add-product/add-product.component';
+
+import { AllProductsComponent } from 'src/app/modules/all-products/all-products.component';
 const routes: Routes = [
   {
     path: 'dashboard', component: DefaultComponent, children: [{
@@ -38,6 +40,8 @@ const routes: Routes = [
       path: 'productDetails', component: ProductDetailsComponent
     }, {
       path: 'addProduct', component: AddProductComponent
+    }, {
+      path: 'allProducts', component: AllProductsComponent
     }
     ]
   },

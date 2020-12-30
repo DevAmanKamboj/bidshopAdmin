@@ -20,7 +20,7 @@
 
         <mat-form-field class="example-full-width">
           <mat-label>Product Category</mat-label>
-          <select matNativeControl [(ngModel)]="product.productCategoryId" name="productCategoryId">
+          <select  matNativeControl [(ngModel)]="product.productCategoryId" name="productCategoryId">
             <option *ngFor="let category of productCategory" [value]="category.id">{{category.categoryName}}</option>
           </select>
         </mat-form-field>

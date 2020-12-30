@@ -2,12 +2,19 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { tokenName } from '@angular/compiler';
 import { FormatWidth } from '@angular/common';
+import { ProductService } from './shared/models/product.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpService {
   constructor(private http: HttpClient) { }
+
+  getAllProducts() {
+    const headers = new HttpHeaders().set("Authorization", sessionStorage.getItem('token'));
+    return this.http.get('http://localhost:8080/product/getAll', { headers });
+  }
+
 
   getAllActiveProducts() {
     const headers = new HttpHeaders().set("Authorization", sessionStorage.getItem('token'));
@@ -39,7 +46,7 @@ export class HttpService {
     const headers = new HttpHeaders().set("Authorization", sessionStorage.getItem('token'));
     return this.http.get('http://localhost:8080/product/get/' + id, { headers });
   }
-  getProductCategory(id: string) {
+  getProductCategory(id: number) {
     const headers = new HttpHeaders().set("Authorization", sessionStorage.getItem('token'));
     return this.http.get('http://localhost:8080/productCategory/get/' + id, { headers });
   }
@@ -54,7 +61,7 @@ export class HttpService {
     return this.http.post('http://localhost:8080/product/add', product, { headers });
   }
 
-  uploadProductImages(productId: number, file: File[]) {
+  uploadProductImages(productId: number, file: File[],product:Object) {
     // var files=file;
     const headers = new HttpHeaders().set("Authorization", sessionStorage.getItem('token'));
     headers.append('Content-Type', 'multipart/form-data');
@@ -72,6 +79,7 @@ export class HttpService {
       formData.append('file', element);
     });
     formData.append('productId', JSON.stringify(productId));
+    formData.append('product', JSON.stringify(product));
 
     // file.forEach(function (element) {
     //   formData.append('file', element);

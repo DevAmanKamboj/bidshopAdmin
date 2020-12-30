@@ -27,7 +27,7 @@ export class AddProductComponent implements OnInit {
     this.http.getProductDetails(this.dataService.productId).subscribe(responseData => {
       this.product = responseData['data'];
     });
-    console.log("product Id="+this.dataService.productId);
+    console.log("product Id=" + this.dataService.productId);
 
   }
 
@@ -51,11 +51,11 @@ export class AddProductComponent implements OnInit {
 
     // this.product.endDateTime.toLocaleString();
 
-
-
-    this.http.uploadProductImages(1, this.images).subscribe(responseData => {
+    if (this.product.productCategoryId != null)
+      this.product.productCategoryId = Number(this.product.productCategoryId);
+    this.http.uploadProductImages(1, this.images, this.product).subscribe(responseData => {
       console.log("response Received= " + responseData['message']);
-    })
+    });
 
     // console.log("sent data=" + this.product.startDateTime);
     // this.http.addProduct(this.product).subscribe(responseData => {
