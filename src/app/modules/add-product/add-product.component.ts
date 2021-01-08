@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { faImages } from '@fortawesome/free-solid-svg-icons';
 import { HttpService } from 'src/app/http.service';
 import { DataService } from 'src/app/shared/data.service';
+import { AddProductService } from 'src/app/shared/forms/add-product.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ProductCategoryService } from 'src/app/shared/models/product-category.service';
 import { ProductService } from 'src/app/shared/models/product.service';
 
@@ -18,7 +20,7 @@ export class AddProductComponent implements OnInit {
   productCategory: ProductCategoryService[];
   images: File[];
 
-  constructor(private http: HttpService, private datePipe: DatePipe, private dataService: DataService) { }
+  constructor(private http: HttpService, private datePipe: DatePipe, private dataService: DataService, private snackbar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.http.getAllProductCategory().subscribe(responseData => {
@@ -53,8 +55,15 @@ export class AddProductComponent implements OnInit {
 
     if (this.product.productCategoryId != null)
       this.product.productCategoryId = Number(this.product.productCategoryId);
-    this.http.uploadProductImages(1, this.images, this.product).subscribe(responseData => {
-      console.log("response Received= " + responseData['message']);
+    // const addProductForm = new AddProductService();
+    // addProductForm.productId = 1;
+    // addProductForm.product = this.product;
+    // addProductForm.images = this.images;
+
+
+    this.http.addUpdateProduct(this.product).subscribe(responseData => {
+      this.snackbar.open(responseData['message'], "OK", { duration: 2000, });
+      // console.log("response Received= " + responseData['message']);
     });
 
     // console.log("sent data=" + this.product.startDateTime);
@@ -64,6 +73,4 @@ export class AddProductComponent implements OnInit {
     // })
     // console.log(this.product);
   }
-
-
 }

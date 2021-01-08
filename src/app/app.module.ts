@@ -9,6 +9,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { DefaultModule } from './layouts/default/default.module';
 import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTableModule } from '@angular/material/table';
+import { AllProductsComponent } from './modules/all-products/all-products.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatButtonModule } from '@angular/material/button';
+
 
 
 
@@ -17,7 +22,8 @@ const appRoutes: Routes = [];
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    AllProductsComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +33,10 @@ const appRoutes: Routes = [];
     DefaultModule,
     SharedModule,
     RouterModule.forRoot(appRoutes, { relativeLinkResolution: 'legacy' }),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

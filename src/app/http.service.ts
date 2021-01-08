@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { tokenName } from '@angular/compiler';
 import { FormatWidth } from '@angular/common';
 import { ProductService } from './shared/models/product.service';
+import { AddProductService } from './shared/forms/add-product.service';
 
 @Injectable({
   providedIn: 'root'
@@ -61,25 +62,36 @@ export class HttpService {
     return this.http.post('http://localhost:8080/product/add', product, { headers });
   }
 
-  uploadProductImages(productId: number, file: File[],product:Object) {
+  addUpdateProduct(product: ProductService) {
     // var files=file;
     const headers = new HttpHeaders().set("Authorization", sessionStorage.getItem('token'));
-    headers.append('Content-Type', 'multipart/form-data');
-    headers.append('Accept', 'application/json');
+    //  headers.append('Content-Type', 'multipart/form-data');
+    //  headers.append('Accept', 'application/json');
     // headers.delete('Content-Type');
-    // headers.set("enctype","multipart/form-data");
+    // headers.set("enctype", "multipart/form-data");
 
     //   const list = [ 
     //     { 'file': file}
     //  ];
     // headers.delete("Content-Type");
-    const formData = new FormData();
+    // const formData = new FormData();
+    // product.startDateTime = null;
+    // product.endDateTime = null;
 
-    Array.prototype.forEach.call(file, element => {
-      formData.append('file', element);
-    });
-    formData.append('productId', JSON.stringify(productId));
-    formData.append('product', JSON.stringify(product));
+    // Array.prototype.forEach.call(addProductForm.images, element => {
+    //   formData.append('images', JSON.stringify(element));
+    // });
+
+
+
+    // let params = new HttpParams();
+    // params.set('productId', JSON.stringify(productId));
+    // params.set('product', JSON.stringify(product));
+
+    // var productNew = new ProductService();
+    // formData.append('productId', JSON.stringify(addProductForm.productId));
+    // formData.append('product', JSON.stringify(addProductForm.product));
+    // formData.append('images', JSON.stringify(addProductForm.images));
 
     // file.forEach(function (element) {
     //   formData.append('file', element);
@@ -93,6 +105,26 @@ export class HttpService {
     // console.log("form data=" + formData.get('file'));
 
 
+    // return this.http.post('http://localhost:8080/product/uploadImages', formData, { headers });
+
+    // const obj: Object(productId: number);
+
+
+    return this.http.post('http://localhost:8080/product/addUpdateProduct', product, { headers });
+  }
+
+  addUpdateImages(images: File[], productId: number) {
+    const headers = new HttpHeaders().set("Authorization", sessionStorage.getItem('token'));
+    headers.append('Content-Type', 'multipart/form-data');
+    const formData = new FormData();
+
+    formData.append('productId', JSON.stringify(productId));
+
+    images.forEach(function (element) {
+      formData.append('images', element);
+    });
+
     return this.http.post('http://localhost:8080/product/uploadImages', formData, { headers });
+
   }
 }
