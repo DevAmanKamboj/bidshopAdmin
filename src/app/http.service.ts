@@ -115,12 +115,17 @@ export class HttpService {
 
   addUpdateImages(images: File[], productId: number) {
     const headers = new HttpHeaders().set("Authorization", sessionStorage.getItem('token'));
-    headers.append('Content-Type', 'multipart/form-data');
+    // headers.append('Content-Type', 'multipart/form-data');
     const formData = new FormData();
 
     formData.append('productId', JSON.stringify(productId));
 
-    images.forEach(function (element) {
+    // images.forEach(function (element) {
+    //   formData.append('images', element);
+    // });
+
+
+    Array.prototype.forEach.call(images, element => {
       formData.append('images', element);
     });
 

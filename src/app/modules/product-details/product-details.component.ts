@@ -34,7 +34,7 @@ export class ProductDetailsComponent implements OnInit {
   ngOnDestroy(): void {
     //Called once, before the instance is destroyed.
     //Add 'implements OnDestroy' to the class.
-    this.dataService.productId=null;
+    this.dataService.productId = null;
   }
 
 }

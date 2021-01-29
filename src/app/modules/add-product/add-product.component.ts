@@ -63,6 +63,8 @@ export class AddProductComponent implements OnInit {
 
     this.http.addUpdateProduct(this.product).subscribe(responseData => {
       this.snackbar.open(responseData['message'], "OK", { duration: 2000, });
+      console.log(responseData['data']);
+      this.saveImages(responseData['data']['id']);
       // console.log("response Received= " + responseData['message']);
     });
 
@@ -72,5 +74,13 @@ export class AddProductComponent implements OnInit {
     //   console.log("received data=" + this.product);
     // })
     // console.log(this.product);
+  }
+
+  saveImages(productId: number) {
+    console.log(productId);
+    this.http.addUpdateImages(this.images, productId).subscribe(responseData => {
+      console.log(responseData['message']);
+    });
+
   }
 }
