@@ -39,7 +39,9 @@ export class LoginComponent implements OnInit {
       // if (responseData['status'] == 'Success') {
       if (this.status == "Success") {
         console.log("Success:" + responseData['data']['authToken']);
-        sessionStorage.setItem('token', responseData['data']['authToken']);
+        // sessionStorage.setItem('token', responseData['data']['authToken']);
+        
+        localStorage.setItem('token', responseData['data']['authToken']);
         this.router.navigate(['/dashboard']);
         //    this.router.navigate(['/dashboard']);
       }

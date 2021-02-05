@@ -45,6 +45,6 @@ export class UserBidsTabComponent implements OnInit {
 
   getProductDetail(productId: string) {
     this.dataService.productId = productId;
-    this.router.navigate(['dashboard/productDetails']);
+    this.router.navigate(['dashboard/productDetails',productId]);
   }
 }

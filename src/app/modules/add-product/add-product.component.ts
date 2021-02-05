@@ -7,6 +7,7 @@ import { AddProductService } from 'src/app/shared/forms/add-product.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ProductCategoryService } from 'src/app/shared/models/product-category.service';
 import { ProductService } from 'src/app/shared/models/product.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-add-product',
@@ -20,16 +21,16 @@ export class AddProductComponent implements OnInit {
   productCategory: ProductCategoryService[];
   images: File[];
 
-  constructor(private http: HttpService, private datePipe: DatePipe, private dataService: DataService, private snackbar: MatSnackBar) { }
+  constructor(private http: HttpService, private datePipe: DatePipe, private dataService: DataService, private snackbar: MatSnackBar, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.http.getAllProductCategory().subscribe(responseData => {
       this.productCategory = responseData['data'];
     });
-    this.http.getProductDetails(this.dataService.productId).subscribe(responseData => {
+    this.http.getProductDetails(this.route.snapshot.params['id']).subscribe(responseData => {
       this.product = responseData['data'];
     });
-    console.log("product Id=" + this.dataService.productId);
+    // console.log("product Id=" + this.dataService.productId);
 
   }
 

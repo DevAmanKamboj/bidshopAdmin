@@ -4,7 +4,7 @@ import { DataService } from 'src/app/shared/data.service';
 import { HttpService } from 'src/app/http.service';
 import { ProductService } from 'src/app/shared/models/product.service';
 import { ProductCategoryService } from 'src/app/shared/models/product-category.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-details',
@@ -15,10 +15,10 @@ export class ProductDetailsComponent implements OnInit {
 
   product = new ProductService();
   productCategory = new ProductCategoryService();
-  constructor(private dataService: DataService, private http: HttpService, private router: Router) { }
+  constructor(private dataService: DataService, private http: HttpService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.http.getProductDetails(this.dataService.productId).subscribe(responseData => {
+    this.http.getProductDetails(this.route.snapshot.params['id']).subscribe(responseData => {
       this.product = responseData['data'];
       this.http.getProductCategory(this.product.productCategoryId).subscribe(responseData => {
         this.productCategory = responseData['data'];

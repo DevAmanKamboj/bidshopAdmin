@@ -24,7 +24,7 @@ export class WinningProductsTabComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private router:Router,private dataService:DataService) { }
+  constructor(private router: Router, private dataService: DataService) { }
 
   ngOnInit(): void {
   }
@@ -38,7 +38,7 @@ export class WinningProductsTabComponent implements OnInit {
   }
   getProductDetail(productId: string) {
     this.dataService.productId = productId;
-    this.router.navigate(['dashboard/productDetails']);
+    this.router.navigate(['dashboard/productDetails', productId]);
   }
 
 }

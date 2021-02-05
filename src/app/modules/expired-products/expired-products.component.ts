@@ -37,13 +37,13 @@ export class ExpiredProductsComponent implements OnInit {
   getProductDetail(id: string) {
     // alert("Product with ID=" + id + " clicked");
     this.dataService.productId = id;
-    this.router.navigate(['dashboard/productDetails']);
+    this.router.navigate(['dashboard/productDetails',id]);
   }
 
   editProductDetail(id: string) {
     // alert("Product with ID=" + id + " clicked");
     this.dataService.productId = id;
-    this.router.navigate(['dashboard/addProduct']);
+    this.router.navigate(['dashboard/addProduct',id]);
   }
 
 }
