@@ -40,7 +40,7 @@ import { CarouselModule, WavesModule } from 'angular-bootstrap-md';
 
 import { ProductBidsTabComponent } from 'src/app/modules/product-bids-tab/product-bids-tab.component';
 // import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { AddProductComponent } from 'src/app/modules/add-product/add-product.component';
 

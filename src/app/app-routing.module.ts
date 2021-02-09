@@ -24,27 +24,28 @@ import { AddProductComponent } from 'src/app/modules/add-product/add-product.com
 
 import { AllProductsComponent } from 'src/app/modules/all-products/all-products.component';
 import { LoginGuardGuard } from './login-guard.guard';
+import { DashboardMenuGuard } from './dashboard-menu.guard';
 
 const routes: Routes = [
   {
-    path: 'dashboard', component: DefaultComponent, children: [{
-      path: '', component: DashboardComponent, canActivate: [LoginGuardGuard]
+    path: 'dashboard', component: DefaultComponent, canActivateChild: [DashboardMenuGuard], children: [{
+      path: '', component: DashboardComponent
     }, {
-      path: 'users', component: UsersComponent, canActivate: [LoginGuardGuard]
+      path: 'users', component: UsersComponent
     }, {
-      path: 'activeProducts', component: ActiveProductsComponent, canActivate: [LoginGuardGuard]
+      path: 'activeProducts', component: ActiveProductsComponent
     }, {
-      path: 'expiredProducts', component: ExpiredProductsComponent, canActivate: [LoginGuardGuard]
+      path: 'expiredProducts', component: ExpiredProductsComponent
     }, {
-      path: 'upcomingProducts', component: UpcomingProductsComponent, canActivate: [LoginGuardGuard]
+      path: 'upcomingProducts', component: UpcomingProductsComponent
     }, {
-      path: 'userDetail', component: UserDetailComponent, canActivate: [LoginGuardGuard]
+      path: 'userDetail', component: UserDetailComponent
     }, {
-      path: 'productDetails/:id', component: ProductDetailsComponent, canActivate: [LoginGuardGuard]
+      path: 'productDetails/:id', component: ProductDetailsComponent
     }, {
-      path: 'addProduct/:id', component: AddProductComponent, canActivate: [LoginGuardGuard]
+      path: 'addProduct/:id', component: AddProductComponent
     }, {
-      path: 'allProducts', component: AllProductsComponent, canActivate: [LoginGuardGuard]
+      path: 'allProducts', component: AllProductsComponent
     }
     ]
   },
