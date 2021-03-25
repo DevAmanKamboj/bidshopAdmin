@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
     // status: String;
     // console.log(this.user.username);
     // console.log(this.user.password);
-    this.http.post("http://localhost:8080/login", this.user).subscribe(responseData => {
+    this.http.post("http://192.168.18.25:8080/login", this.user).subscribe(responseData => {
       this.status = responseData['status'];
       // if (responseData['status'] == 'Success') {
       if (this.status == "Success") {
@@ -57,4 +57,3 @@ export class LoginComponent implements OnInit {
     // }
   }
 }
-

@@ -41,6 +41,6 @@ export class AllProductsComponent implements OnInit {
   editProductDetail(id: string) {
     // alert("Product with ID=" + id + " clicked");
     this.dataService.productId = id;
-    this.router.navigate(['dashboard/addProduct',id]);
+    this.router.navigate(['dashboard/addProduct',id]); 
   }
 }

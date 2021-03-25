@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { tokenName } from '@angular/compiler';
 import { FormatWidth } from '@angular/common';
 import { ProductService } from './shared/models/product.service';
+// import { DatePipe } from '@angular/common';
+
 import { AddProductService } from './shared/forms/add-product.service';
 
 @Injectable({
@@ -13,53 +15,50 @@ export class HttpService {
 
   getAllProducts() {
     const headers = new HttpHeaders().set("Authorization", localStorage.getItem('token'));
-    return this.http.get('http://localhost:8080/product/getAll', { headers });
+    return this.http.get('http://192.168.18.25:8080/product/getAll', { headers });
   }
-
-
   getAllActiveProducts() {
     const headers = new HttpHeaders().set("Authorization", localStorage.getItem('token'));
-    return this.http.get('http://localhost:8080/product/getAllActive', { headers });
+    return this.http.get('http://192.168.18.25:8080/product/getAllActive', { headers });
   }
   getAllUser() {
     const headers = new HttpHeaders().set("Authorization", localStorage.getItem('token'));
-    return this.http.get('http://localhost:8080/user/getAll', { headers });
+    return this.http.get('http://192.168.18.25:8080/user/getAll', { headers });
   }
   getAllExpiredProducts() {
     const headers = new HttpHeaders().set("Authorization", localStorage.getItem('token'));
-    return this.http.get('http://localhost:8080/product/getAllExpired', { headers });
+    return this.http.get('http://192.168.18.25:8080/product/getAllExpired', { headers });
   }
   getAllUpcomingProducts() {
     const headers = new HttpHeaders().set("Authorization", localStorage.getItem('token'));
-    return this.http.get('http://localhost:8080/product/getUpcomingProducts', { headers });
+    return this.http.get('http://192.168.18.25:8080/product/getUpcomingProducts', { headers });
   }
   getUserDetails(id: string) {
     const headers = new HttpHeaders().set("Authorization", localStorage.getItem('token'));
-    return this.http.get('http://localhost:8080/user/getById/' + id, { headers });
+    return this.http.get('http://192.168.18.25:8080/user/getById/' + id, { headers });
   }
-
   updateUser(user: Object) {
     const headers = new HttpHeaders().set("Authorization", localStorage.getItem('token'));
-    return this.http.post('http://localhost:8080/user/updateFromAdmin', user, { headers });
+    return this.http.post('http://192.168.18.25:8080/user/updateFromAdmin', user, { headers });
   }
 
   getProductDetails(id: string) {
     const headers = new HttpHeaders().set("Authorization", localStorage.getItem('token'));
-    return this.http.get('http://localhost:8080/product/get/' + id, { headers });
+    return this.http.get('http://192.168.18.25:8080/product/get/' + id, { headers });
   }
   getProductCategory(id: number) {
     const headers = new HttpHeaders().set("Authorization", localStorage.getItem('token'));
-    return this.http.get('http://localhost:8080/productCategory/get/' + id, { headers });
+    return this.http.get('http://192.168.18.25:8080/productCategory/get/' + id, { headers });
   }
 
   getAllProductCategory() {
     const headers = new HttpHeaders().set("Authorization", localStorage.getItem('token'));
-    return this.http.get('http://localhost:8080/productCategory/getAll');
+    return this.http.get('http://192.168.18.25:8080/productCategory/getAll');
   }
 
   addProduct(product: Object) {
     const headers = new HttpHeaders().set("Authorization", localStorage.getItem('token'));
-    return this.http.post('http://localhost:8080/product/add', product, { headers });
+    return this.http.post('http://192.168.18.25:8080/product/add', product, { headers });
   }
 
   addUpdateProduct(product: ProductService) {
@@ -108,9 +107,9 @@ export class HttpService {
     // return this.http.post('http://localhost:8080/product/uploadImages', formData, { headers });
 
     // const obj: Object(productId: number);
-
-
-    return this.http.post('http://localhost:8080/product/addUpdateProduct', product, { headers });
+    // product.startDateTime =new Date(this.datePipe.transform(product.startDateTime, 'YYYY-MM-dd HH:mm:ss'));
+    // let datas=JSON.stringify(product);
+    return this.http.post('http://192.168.18.25:8080/product/addUpdateProduct', product, { headers });
   }
 
   addUpdateImages(images: File[], productId: number) {
@@ -129,7 +128,7 @@ export class HttpService {
       formData.append('images', element);
     });
 
-    return this.http.post('http://localhost:8080/product/uploadImages', formData, { headers });
+    return this.http.post('http://192.168.18.25:8080/product/uploadImages', formData, { headers });
 
   }
 }

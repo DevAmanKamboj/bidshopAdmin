@@ -9,6 +9,8 @@ import { ProductCategoryService } from 'src/app/shared/models/product-category.s
 import { ProductService } from 'src/app/shared/models/product.service';
 import { ActivatedRoute } from '@angular/router';
 
+// import { DatePipe } from '@angular/common';
+
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
@@ -60,7 +62,24 @@ export class AddProductComponent implements OnInit {
     // addProductForm.productId = 1;
     // addProductForm.product = this.product;
     // addProductForm.images = this.images;
+    // console.log(this.product.startDateTime);
+    // let dateString= new DatePipe('en-US').transform(this.product.startDateTime, 'YYYY-MM-dd HH:mm:ss');
+    // console.log(dateString);
+    // this.product.startDateTime=new Date(this.product.startDateTime);
 
+    // this.product.startDateTime = new Date(this.product.startDateTime);
+    // let stringForDate = this.product.startDateTime.toISOString().replace('Z', ' ').replace('T', ' ');
+    // this.product.startDateTime = new Date(stringForDate);
+
+    
+    // this.product.endDateTime = new Date(this.product.endDateTime);
+    // let stringForEndDate = this.product.endDateTime.toISOString().replace('Z', ' ').replace('T', ' ');
+    // this.product.endDateTime = new Date(stringForEndDate);
+    // console.log(this.product.startDateTime);
+    // console.log(this.product.startDateTime);
+
+
+    // this.product.startDateTime =new Date(this.datePipe.transform(this.product.startDateTime, 'YYYY-MM-dd HH:mm:ss'));
 
     this.http.addUpdateProduct(this.product).subscribe(responseData => {
       this.snackbar.open(responseData['message'], "OK", { duration: 2000, });
