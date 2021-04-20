@@ -38,10 +38,10 @@ export class LoginComponent implements OnInit {
       this.status = responseData['status'];
       // if (responseData['status'] == 'Success') {
       if (this.status == "Success") {
-        console.log("Success:" + responseData['data']['authToken']);
+        console.log("Success:" + responseData['data']['user']['authToken']);
         // sessionStorage.setItem('token', responseData['data']['authToken']);
         
-        localStorage.setItem('token', responseData['data']['authToken']);
+        localStorage.setItem('token', responseData['data']['user']['authToken']);
         this.router.navigate(['/dashboard']);
         //    this.router.navigate(['/dashboard']);
       }

@@ -4,6 +4,7 @@ import { tokenName } from '@angular/compiler';
 import { FormatWidth } from '@angular/common';
 import { ProductService } from './shared/models/product.service';
 // import { DatePipe } from '@angular/common';
+// import { DatePipe } from '@angular/common';
 
 import { AddProductService } from './shared/forms/add-product.service';
 
@@ -58,57 +59,19 @@ export class HttpService {
 
   addProduct(product: Object) {
     const headers = new HttpHeaders().set("Authorization", localStorage.getItem('token'));
+
     return this.http.post('http://192.168.18.25:8080/product/add', product, { headers });
   }
 
   addUpdateProduct(product: ProductService) {
     // var files=file;
     const headers = new HttpHeaders().set("Authorization", localStorage.getItem('token'));
-    //  headers.append('Content-Type', 'multipart/form-data');
-    //  headers.append('Accept', 'application/json');
-    // headers.delete('Content-Type');
-    // headers.set("enctype", "multipart/form-data");
 
-    //   const list = [ 
-    //     { 'file': file}
-    //  ];
-    // headers.delete("Content-Type");
-    // const formData = new FormData();
-    // product.startDateTime = null;
-    // product.endDateTime = null;
-
-    // Array.prototype.forEach.call(addProductForm.images, element => {
-    //   formData.append('images', JSON.stringify(element));
-    // });
+    // for converting timezone to local, we have to set time with new date object
+    product.startDateTime = new Date(product.startDateTime);
+    product.endDateTime = new Date(product.endDateTime);
 
 
-
-    // let params = new HttpParams();
-    // params.set('productId', JSON.stringify(productId));
-    // params.set('product', JSON.stringify(product));
-
-    // var productNew = new ProductService();
-    // formData.append('productId', JSON.stringify(addProductForm.productId));
-    // formData.append('product', JSON.stringify(addProductForm.product));
-    // formData.append('images', JSON.stringify(addProductForm.images));
-
-    // file.forEach(function (element) {
-    //   formData.append('file', element);
-    // });
-
-    // formData.append('file', JSON.stringify(file));
-    // console.log(formData.get("file"));
-    // console.log(file);
-    // console.log(JSON.stringify(file));
-    // formData.append('enctype', 'application/x-www-form-urlencoded');
-    // console.log("form data=" + formData.get('file'));
-
-
-    // return this.http.post('http://localhost:8080/product/uploadImages', formData, { headers });
-
-    // const obj: Object(productId: number);
-    // product.startDateTime =new Date(this.datePipe.transform(product.startDateTime, 'YYYY-MM-dd HH:mm:ss'));
-    // let datas=JSON.stringify(product);
     return this.http.post('http://192.168.18.25:8080/product/addUpdateProduct', product, { headers });
   }
 
@@ -119,10 +82,6 @@ export class HttpService {
 
     formData.append('productId', JSON.stringify(productId));
 
-    // images.forEach(function (element) {
-    //   formData.append('images', element);
-    // });
-
 
     Array.prototype.forEach.call(images, element => {
       formData.append('images', element);
@@ -130,5 +89,5 @@ export class HttpService {
 
     return this.http.post('http://192.168.18.25:8080/product/uploadImages', formData, { headers });
 
-  }
+  } 
 }
