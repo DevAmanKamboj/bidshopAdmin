@@ -59,19 +59,15 @@ export class HttpService {
 
   addProduct(product: Object) {
     const headers = new HttpHeaders().set("Authorization", localStorage.getItem('token'));
-
     return this.http.post('http://192.168.18.25:8080/product/add', product, { headers });
   }
 
   addUpdateProduct(product: ProductService) {
     // var files=file;
     const headers = new HttpHeaders().set("Authorization", localStorage.getItem('token'));
-
     // for converting timezone to local, we have to set time with new date object
     product.startDateTime = new Date(product.startDateTime);
     product.endDateTime = new Date(product.endDateTime);
-
-
     return this.http.post('http://192.168.18.25:8080/product/addUpdateProduct', product, { headers });
   }
 
@@ -79,15 +75,10 @@ export class HttpService {
     const headers = new HttpHeaders().set("Authorization", localStorage.getItem('token'));
     // headers.append('Content-Type', 'multipart/form-data');
     const formData = new FormData();
-
     formData.append('productId', JSON.stringify(productId));
-
-
     Array.prototype.forEach.call(images, element => {
       formData.append('images', element);
     });
-
     return this.http.post('http://192.168.18.25:8080/product/uploadImages', formData, { headers });
-
-  } 
+  }
 }

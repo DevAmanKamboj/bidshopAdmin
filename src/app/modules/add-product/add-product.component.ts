@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { faImages } from '@fortawesome/free-solid-svg-icons';
 import { HttpService } from 'src/app/http.service';
 import { DataService } from 'src/app/shared/data.service';
@@ -22,6 +22,7 @@ export class AddProductComponent implements OnInit {
   product = new ProductService();
   productCategory: ProductCategoryService[];
   images: File[];
+  // @ViewChild("startDateTime") startTiming: Element;
 
   constructor(private http: HttpService, private datePipe: DatePipe, private dataService: DataService, private snackbar: MatSnackBar, private route: ActivatedRoute) { }
 
@@ -31,6 +32,8 @@ export class AddProductComponent implements OnInit {
     });
     this.http.getProductDetails(this.route.snapshot.params['id']).subscribe(responseData => {
       this.product = responseData['data'];
+      // this.startTiming.set
+
     });
     // console.log("product Id=" + this.dataService.productId);
 
@@ -71,7 +74,7 @@ export class AddProductComponent implements OnInit {
     // let stringForDate = this.product.startDateTime.toISOString().replace('Z', ' ').replace('T', ' ');
     // this.product.startDateTime = new Date(stringForDate);
 
-    
+
     // this.product.endDateTime = new Date(this.product.endDateTime);
     // let stringForEndDate = this.product.endDateTime.toISOString().replace('Z', ' ').replace('T', ' ');
     // this.product.endDateTime = new Date(stringForEndDate);
